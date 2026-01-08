@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bogong Rugby Club – Teams</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: "Open Sans", Arial, sans-serif;
+      margin: 0;
+      background: #f6f7f4;
+    }
+
+    a { text-decoration: none; }
+
+    /* ===== STICKY HEADER WITH GRADIENT (same as index) ===== */
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: linear-gradient(90deg, hsl(96, 60%, 68%) 0%, #f3f5f4 100%);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .header-left a { display: inline-block; }
+
+    .header-left img {
+      width: 70px;
+      height: auto;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .header-left h1 {
+      margin: 0;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      color: rgb(22, 68, 3);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-item { position: relative; }
+
+    .nav-link {
+      color: rgb(22, 68, 3);
+      padding: 8px 14px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 4px;
+      transition: background 0.2s ease, transform 0.1s ease, color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background: rgb(80, 4, 2);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+      background: rgb(80, 4, 2);
+      color: #fff;
+    }
+
+    .nav-link i { font-size: 0.85rem; }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: #ffffff;
+      color: #333;
+      min-width: 170px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border-radius: 4px;
+      padding: 6px 0;
+      z-index: 999;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 14px;
+      color: #222;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover { background: #f0f0f0; }
+
+    .nav-item.dropdown:hover .dropdown-menu { display: block; }
+
+    /* SEARCH BOX IN NAV */
+    .nav-search {
+      display: flex;
+      align-items: center;
+      margin-left: 15px;
+      background: rgb(5, 153, 24);
+      padding: 4px 8px;
+      border-radius: 20px;
+    }
+
+    .nav-search input {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: rgb(22, 68, 3);
+      width: 130px;
+      font-size: 0.9rem;
+    }
+
+    .nav-search input::placeholder { color: #aae79e; }
+
+    .nav-search button {
+      background: none;
+      border: none;
+      color: rgb(21, 143, 17);
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-search button:hover { color: #ffe680; }
+
+    @media (max-width: 800px) {
+      .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+      }
+
+      .header-left { margin-bottom: 8px; }
+
+      .header-left h1 { font-size: 1.4rem; }
+
+      .header-nav {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6px;
+      }
+
+      .nav-list {
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .nav-link {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+      }
+
+      .dropdown-menu {
+        right: auto;
+        left: 0;
+      }
+
+      .nav-search {
+        width: 100%;
+        margin: 8px 0 0 0;
+        justify-content: center;
+      }
+
+      .nav-search input { width: 60%; }
+    }
+
+    /* ===== PAGE CONTENT ===== */
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 16px 40px;
+    }
+
+    .page-title {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #004d00;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .page-intro {
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .teams-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .team-card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 16px 18px;
+      border-top: 4px solid #004d00;
+    }
+
+    .team-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-family: "Montserrat", Arial, sans-serif;
+      color: #004d00;
+    }
+
+    .team-meta {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .team-card p {
+      font-size: 0.92rem;
+      margin: 0 0 6px;
+      line-height: 1.5;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #e1f5df;
+      color: #225b15;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #004d00;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="header-left">
+      <a href="index.html">
+        <img src="logo-6.png" alt="Bogong Rugby Club Logo">
+      </a>
+      <h1>BOGONG RUGBY CLUB</h1>
+    </div>
+
+    <nav class="header-nav">
+      <form class="nav-search">
+        <input type="text" placeholder="Search..." />
+        <button type="button"><i class="fa fa-search"></i></button>
+      </form>
+
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link"><i class="fa fa-home"></i> Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="Teams.html" class="nav-link active">Teams <i class="fa fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="#mens">Men's XV</a>
+            <a href="#womens">Women's XV</a>
+            <a href="#sevens">Sevens Squad</a>
+            <a href="#juniors">Juniors</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Fixtures <i class="fa fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="#">Upcoming Matches</a>
+            <a href="#">Tournaments</a>
+            <a href="#">Training Schedule</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Club <i class="fa fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html#about">About</a>
+            <a href="committee.html">Committee</a>
+            <a href="#">Policies</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link">Shop <i class="fa fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="#">Merchandise</a>
+            <a href="#">Jerseys</a>
+            <a href="#">Accessories</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link"><i class="fa fa-envelope"></i> Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PAGE CONTENT -->
+  <main class="page-wrapper">
+    <h2 class="page-title">Our Teams</h2>
+    <p class="page-intro">
+      Bogong Rugby Club is building squads that represent our region with pride, discipline and
+      heart. From sevens tournaments to full XVs, every jersey worn carries our community with it.
+    </p>
+
+    <section class="teams-grid">
+      <article class="team-card" id="sevens">
+        <h3>Sevens Squad</h3>
+        <p class="team-meta">Format: Sevens • Focus: Tournaments & Festival Rugby</p>
+        <p>
+          Our Bogong Sevens Squad is the spearhead of the club – fast, physical and fearless.
+          Competing in regional sevens tournaments, the squad focuses on high-intensity fitness,
+          smart support play and playing with flair.
+        </p>
+        <p>
+          Ideal for players who love space, speed and testing themselves in short-format rugby.
+        </p>
+        <span class="tag-pill">Tournament Squad</span>
+      </article>
+
+      <article class="team-card" id="mens">
+        <h3>Men's XV</h3>
+        <p class="team-meta">Format: XVs • Focus: Structure, Set Piece, Club Culture</p>
+        <p>
+          Our Men's XV is the engine room of the club’s long-term vision. As we grow, this side
+          will anchor our involvement in regular competitions and build a strong Bogong identity
+          week in, week out.
+        </p>
+        <p>
+          A home for forwards who love the grind and backs who want to control territory and tempo.
+        </p>
+        <span class="tag-pill">Building Squad</span>
+      </article>
+
+      <article class="team-card" id="womens">
+        <h3>Women's XV / Sevens</h3>
+        <p class="team-meta">Format: XVs & Sevens • Focus: Growth & Inclusion</p>
+        <p>
+          Bogong is committed to creating space for women’s rugby in our region. As interest grows,
+          we will shape a dedicated women’s squad, starting with sevens and building towards a full XV.
+        </p>
+        <p>
+          Open to all experience levels – from first-timers to seasoned players returning to the game.
+        </p>
+        <span class="tag-pill">Women in Rugby</span>
+      </article>
+
+      <article class="team-card" id="juniors">
+        <h3>Juniors & Development</h3>
+        <p class="team-meta">Format: Skills & Modified Games • Focus: Future Bogong Players</p>
+        <p>
+          Our juniors are the future of Bogong Rugby Club. As the club grows, we aim to offer
+          age-based programs, clinics and fun rugby experiences that focus on skills, mateship
+          and confidence.
+        </p>
+        <p>
+          Perfect for families who want their kids involved in a positive, structured sporting environment.
+        </p>
+        <span class="tag-pill">Future Bogong</span>
+      </article>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Bogong Rugby Club. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
