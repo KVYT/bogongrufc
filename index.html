@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -19,256 +20,448 @@
 
   <header class="main-header">
     <a class="brand" href="index.html" aria-label="Bogong Rugby Club home">
-      <img src="logo-6.png" alt="Bogong Rugby Club logo" loading="lazy">
+      <img src="logo-6.png" alt="Bogong Rugby Club logo">
       <span class="brand-name">Bogong Rugby Club</span>
     </a>
 
-    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="header-nav">
-      <i class="fas fa-bars"></i>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="header-nav"
+    >
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
     </button>
 
-    <nav id="header-nav" class="header-nav">
+    <nav id="header-nav" class="header-nav" aria-label="Main navigation">
       <ul class="nav-list">
         <li class="nav-item">
-          <a href="fixtures.html" class="nav-link active">Fixtures</a>
+          <a href="index.html" class="nav-link active" aria-current="page">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            Home
+          </a>
         </li>
-        <li class="nav-item">
-          <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-            Information <i class="fas fa-chevron-down"></i>
+
+        <li class="nav-item has-dropdown">
+          <button
+            class="dropdown-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="teams-menu"
+          >
+            Teams
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
           </button>
-          <ul class="dropdown-menu" hidden>
-            <li><a href="#history">Our History</a></li>
-            <li><a href="#values">Values</a></li>
-            <li><a href="#team">Meet the Team</a></li>
+
+          <ul class="dropdown-menu" id="teams-menu" hidden>
+            <li><a href="teams.html">All teams</a></li>
+            <li><a href="teams.html#mens">Men's XV</a></li>
+            <li><a href="teams.html#womens">Women's Rugby</a></li>
+            <li><a href="teams.html#sevens">Sevens Squad</a></li>
+            <li><a href="teams.html#juniors">Juniors</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="shop.html" class="nav-link">Shop</a>
+
+        <li class="nav-item has-dropdown">
+          <button
+            class="dropdown-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="fixtures-menu"
+          >
+            Fixtures
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="fixtures-menu" hidden>
+            <li><a href="fixtures.html">Upcoming matches</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="tournaments.html">Tournaments</a></li>
+            <li><a href="training.html">Training schedule</a></li>
+          </ul>
         </li>
+
+        <li class="nav-item has-dropdown">
+          <button
+            class="dropdown-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="club-menu"
+          >
+            Club
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="club-menu" hidden>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="policies.html">Policies</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+          </ul>
+        </li>
+
         <li class="nav-item">
-          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="shop.html" class="nav-link">
+            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+            Shop
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="contact.html" class="nav-link">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            Contact
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="join.html" class="nav-link">
+            <i class="fa-solid fa-person-running" aria-hidden="true"></i>
+            Join
+          </a>
         </li>
       </ul>
     </nav>
   </header>
 
   <main id="main-content">
-    <!-- Hero Slideshow -->
-    <section class="hero" aria-label="Featured hero slideshow">
+    <!-- Hero slideshow -->
+
+    <section class="hero" aria-label="Bogong Rugby Club highlights">
       <div class="slide active">
-        <img src="hero-1.jpg" alt="Bogong Rugby Club players in action">
+        <img src="swanhill.jpg" alt="Bogong Rugby Club at the Swan Hill tournament">
       </div>
+
       <div class="slide">
-        <img src="hero-2.jpg" alt="Team celebration after match victory">
+        <img src="swanhill-2.jpg" alt="Bogong Rugby Club players gathering in a team huddle">
       </div>
+
       <div class="slide">
-        <img src="hero-3.jpg" alt="Training session on the field">
+        <img src="line-out pic.jpg" alt="Bogong Rugby Club competing in a lineout">
       </div>
+
       <div class="slide">
-        <img src="hero-4.jpg" alt="Community rugby tournament">
+        <img src="footscray.jpg" alt="Bogong Rugby Club playing a match against Footscray">
       </div>
+
       <div class="slide">
-        <img src="hero-5.jpg" alt="Bogong Rugby Club supporters">
+        <img src="first-meeting.jpg" alt="Members attending an early Bogong Rugby Club meeting">
       </div>
 
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <p class="eyebrow">Community Rugby</p>
-        <h1>Play, Train & Connect</h1>
-        <p>Join the Bogong Rugby Club family. Experience elite coaching, passionate community, and unforgettable moments on and off the field.</p>
+        <p class="eyebrow">High country rugby</p>
+        <h1>Stronger together.<br>Bogong forever.</h1>
+        <p>
+          Building community, culture and rugby in the high country — on and off the field.
+        </p>
+
         <div class="button-row">
-          <a href="#join" class="button">Join The Club</a>
-          <a href="#fixtures" class="button button-secondary">View Fixtures</a>
+          <a href="join.html" class="button">
+            Join the Bogong family
+          </a>
+
+          <a href="fixtures.html" class="button button-secondary">
+            View fixtures
+          </a>
         </div>
       </div>
 
-      <button class="slide-control slide-prev" aria-label="Previous slide">
-        <i class="fas fa-chevron-left"></i>
+      <button class="slide-control slide-prev" type="button" aria-label="Show previous photo">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
       </button>
-      <button class="slide-control slide-next" aria-label="Next slide">
-        <i class="fas fa-chevron-right"></i>
+
+      <button class="slide-control slide-next" type="button" aria-label="Show next photo">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
       </button>
 
       <div class="slide-status" aria-live="polite" aria-atomic="true">
-        <span>1 / 5</span>
+        <span id="current-slide">1</span> / <span id="total-slides">5</span>
       </div>
     </section>
 
-    <div class="thumbnail-strip" role="tablist" aria-label="Slide thumbnails">
-      <button class="thumbnail-button active" role="tab" aria-label="Go to slide 1" aria-selected="true">
-        <img src="hero-1-thumb.jpg" alt="">
-      </button>
-      <button class="thumbnail-button" role="tab" aria-label="Go to slide 2" aria-selected="false">
-        <img src="hero-2-thumb.jpg" alt="">
-      </button>
-      <button class="thumbnail-button" role="tab" aria-label="Go to slide 3" aria-selected="false">
-        <img src="hero-3-thumb.jpg" alt="">
-      </button>
-      <button class="thumbnail-button" role="tab" aria-label="Go to slide 4" aria-selected="false">
-        <img src="hero-4-thumb.jpg" alt="">
-      </button>
-      <button class="thumbnail-button" role="tab" aria-label="Go to slide 5" aria-selected="false">
-        <img src="hero-5-thumb.jpg" alt="">
-      </button>
-    </div>
+    <!-- Slideshow thumbnails -->
 
-    <!-- Next Match -->
-    <section class="next-match">
-      <p class="eyebrow">Upcoming</p>
-      <h2>Vs Northern Grampians RFC</h2>
-      <p>Saturday, 14th December 2024 • 2:00 PM • Home</p>
+    <section class="thumbnail-strip" aria-label="Choose a slideshow photo">
+      <button
+        class="thumbnail-button active"
+        type="button"
+        aria-label="Show Swan Hill tournament photo"
+        aria-selected="true"
+        data-slide="0"
+      >
+        <img src="swanhill.jpg" alt="">
+      </button>
+
+      <button
+        class="thumbnail-button"
+        type="button"
+        aria-label="Show team huddle photo"
+        aria-selected="false"
+        data-slide="1"
+      >
+        <img src="swanhill-2.jpg" alt="">
+      </button>
+
+      <button
+        class="thumbnail-button"
+        type="button"
+        aria-label="Show lineout action photo"
+        aria-selected="false"
+        data-slide="2"
+      >
+        <img src="line-out pic.jpg" alt="">
+      </button>
+
+      <button
+        class="thumbnail-button"
+        type="button"
+        aria-label="Show Footscray match photo"
+        aria-selected="false"
+        data-slide="3"
+      >
+        <img src="footscray.jpg" alt="">
+      </button>
+
+      <button
+        class="thumbnail-button"
+        type="button"
+        aria-label="Show first club meeting photo"
+        aria-selected="false"
+        data-slide="4"
+      >
+        <img src="first-meeting.jpg" alt="">
+      </button>
+    </section>
+
+    <!-- Next match -->
+
+    <!-- Replace bracketed information with confirmed match details. -->
+    <section class="next-match" aria-labelledby="next-match-title">
+      <p class="eyebrow">Next match</p>
+      <h2 id="next-match-title">Bogong RUFC vs [Opponent]</h2>
+      <p>Saturday [Date] · [Kick-off time] · [Ground / venue]</p>
+
       <div class="button-row next-match-actions">
-        <a href="#tickets" class="button button-green-outline">Get Tickets</a>
+        <a href="fixtures.html" class="button">
+          Full fixtures
+        </a>
+
+        <a href="contact.html" class="button button-green-outline">
+          Match details
+        </a>
       </div>
     </section>
 
-    <!-- Action Cards -->
-    <section class="page-section">
+    <!-- Get involved -->
+
+    <section class="page-section" aria-labelledby="get-involved-title">
       <div class="section-heading">
-        <p class="eyebrow">Get Started</p>
-        <h2>Why Join Bogong?</h2>
-        <p>Discover what makes our community special</p>
+        <p class="eyebrow">Get involved</p>
+        <h2 id="get-involved-title">There is a place for you at Bogong</h2>
+        <p>
+          Whether you want to play, train, volunteer or support local rugby, start here.
+        </p>
       </div>
 
       <div class="action-grid">
+        <a href="join.html" class="action-card">
+          <i class="fa-solid fa-person-running" aria-hidden="true"></i>
+          <h3>Play with us</h3>
+          <p>
+            New and experienced players are welcome. Register your interest and find out how to get started.
+          </p>
+        </a>
+
         <a href="training.html" class="action-card">
-          <i class="fas fa-dumbbell"></i>
-          <h3>Elite Training</h3>
-          <p>Professional coaching from experienced players and mentors</p>
+          <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+          <h3>Training</h3>
+          <p>
+            Find the latest training times, location and what to bring for your first session.
+          </p>
         </a>
-        <a href="community.html" class="action-card">
-          <i class="fas fa-users"></i>
-          <h3>Strong Community</h3>
-          <p>Build lasting friendships and be part of a supportive team</p>
-        </a>
-        <a href="fixtures.html" class="action-card">
-          <i class="fas fa-calendar"></i>
-          <h3>Regular Fixtures</h3>
-          <p>Compete against teams across the high country</p>
+
+        <a href="contact.html" class="action-card">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+          <h3>Support the club</h3>
+          <p>
+            Ask about volunteering, partnerships, sponsorship or helping on match day.
+          </p>
         </a>
       </div>
     </section>
 
-    <!-- News Section -->
-    <section class="page-section news-section">
+    <!-- Latest News -->
+
+    <section class="page-section news-section" id="news" aria-labelledby="news-title">
       <div class="section-heading">
-        <p class="eyebrow">Latest Updates</p>
-        <h2>News & Stories</h2>
-        <p>Stay updated with club news, player highlights, and upcoming events</p>
+        <p class="eyebrow">Club updates</p>
+        <h2 id="news-title">Latest news</h2>
+        <p>
+          Match updates, announcements and stories from the Bogong community.
+        </p>
       </div>
 
-      <div class="news-grid" id="news-grid">
-        <div class="news-loading">Loading news articles...</div>
+      <div id="news-grid" class="news-grid" aria-live="polite">
+        <p class="news-loading">Loading latest news...</p>
       </div>
     </section>
 
-    <!-- Shop Promotion -->
-    <section class="page-section shop-promo">
-      <div class="shop-promo-content">
+    <!-- Shop promotion -->
+
+    <section class="shop-promo">
+      <div class="page-section shop-promo-content">
         <div>
-          <p class="eyebrow">Exclusive Gear</p>
-          <h2>Bogong Merchandise</h2>
-          <p>Show your pride with official Bogong Rugby Club merchandise. High-quality apparel, accessories, and collectibles.</p>
+          <p class="eyebrow">Wear the colours</p>
+          <h2>Official Bogong merchandise</h2>
+          <p>
+            Support the club and represent the Bogong family with official jerseys,
+            training gear, supporter apparel and club merchandise.
+          </p>
+
           <a href="shop.html" class="button">
-            <i class="fas fa-shopping-bag"></i>
-            Visit Shop
+            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+            Visit the Bogong shop
           </a>
         </div>
+
         <div class="shop-promo-image">
-          <img src="merchandise.jpg" alt="Bogong Rugby Club merchandise display" loading="lazy">
+          <img
+            src="footscray.jpg"
+            alt="Bogong Rugby Club players wearing club colours"
+            loading="lazy"
+          >
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="page-section" id="about">
-      <div class="about-section">
-        <div>
-          <h2>Our Story</h2>
-          <p class="lead">Founded with passion, growing with pride.</p>
-          <p>Bogong Rugby Club was established to bring the community of the high country together through the sport we love. Over the years, we've developed from a local club into a thriving hub for rugby enthusiasts of all ages and abilities.</p>
-          <p>Our commitment to excellence, both on and off the field, defines everything we do. We believe in developing not just skilled players, but good people who contribute positively to our community.</p>
-        </div>
-        <div class="about-image">
-          <img src="about.jpg" alt="Bogong Rugby Club team photo" loading="lazy">
-        </div>
+    <!-- About -->
+
+    <section class="page-section about-section" aria-labelledby="about-title">
+      <div>
+        <p class="eyebrow">Our story</p>
+        <h2 id="about-title">More than a team</h2>
+
+        <p class="lead">
+          Bogong Rugby Club was founded to bring our community together through the power, passion and spirit of rugby.
+        </p>
+
+        <p>
+          What began as a small group of dedicated people has grown into a proud and determined club representing the Bogong region with heart, discipline and unity.
+        </p>
+
+        <p>
+          We value respect, hard work and connection. On the training paddock and on tournament day, we push each other to become better athletes, teammates and leaders in our community.
+        </p>
+
+        <a href="about.html" class="button">Learn about Bogong</a>
+      </div>
+
+      <div class="about-image">
+        <img
+          src="first-meeting.jpg"
+          alt="Members of Bogong Rugby Club at the club's first meeting"
+          loading="lazy"
+        >
       </div>
     </section>
 
-    <!-- Values Section -->
-    <section class="page-section values" id="values">
-      <div class="section-heading">
-        <p class="eyebrow">Our Principles</p>
-        <h2>Club Values</h2>
-      </div>
+    <!-- Club Values -->
 
-      <div class="value-grid">
-        <div class="value">
-          <h3>Excellence</h3>
-          <p>We strive for the highest standards in everything we do, from training to community engagement.</p>
+    <section class="values">
+      <div class="page-section" aria-labelledby="values-title">
+        <div class="section-heading">
+          <p class="eyebrow">What we stand for</p>
+          <h2 id="values-title">Our club values</h2>
+          <p>
+            Community, respect and development guide how we represent Bogong Rugby Club.
+          </p>
         </div>
-        <div class="value">
-          <h3>Community</h3>
-          <p>We're more than a sports club. We're a family that supports each other on and off the field.</p>
-        </div>
-        <div class="value">
-          <h3>Integrity</h3>
-          <p>We play with honesty and respect, upholding the values that make rugby a great sport.</p>
+
+        <div class="value-grid">
+          <article class="value">
+            <h3>Community</h3>
+            <p>
+              We create a welcoming home for players, families, supporters and local partners.
+            </p>
+          </article>
+
+          <article class="value">
+            <h3>Respect</h3>
+            <p>
+              We respect teammates, opponents, officials and the game we represent.
+            </p>
+          </article>
+
+          <article class="value">
+            <h3>Development</h3>
+            <p>
+              We help people grow in confidence, skill, leadership and connection to community.
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Contact CTA -->
-    <section class="page-section contact-band" id="contact">
-      <div class="contact-content">
+
+    <section class="contact-band">
+      <div class="page-section contact-content">
         <div>
-          <h2>Ready to Join?</h2>
-          <p>Get in touch with us to learn more about membership, training sessions, and upcoming events.</p>
+          <h2>Ready to get involved?</h2>
+          <p>
+            Contact Bogong Rugby Club for playing, training, volunteering or sponsorship enquiries.
+          </p>
         </div>
-        <a href="mailto:info@bogongrugbyclub.com" class="button">Contact Us</a>
+
+        <a href="contact.html" class="button">Contact the club</a>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content">
       <div>
         <h2>Bogong Rugby Club</h2>
-        <p>Community rugby in the high country. Building champions and great people since day one.</p>
+        <p>Community rugby in the high country.</p>
+        <p>Stronger together. Bogong forever.</p>
+      </div>
+
+      <div>
+        <h2>Club links</h2>
         <div class="footer-links">
-          <a href="#" aria-label="Follow us on Facebook">
-            <i class="fab fa-facebook"></i>
-          </a>
-          <a href="#" aria-label="Follow us on Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="#" aria-label="Follow us on Twitter">
-            <i class="fab fa-twitter"></i>
-          </a>
+          <a href="fixtures.html">Fixtures</a>
+          <a href="teams.html">Teams</a>
+          <a href="shop.html">Shop</a>
+          <a href="join.html">Join</a>
+          <a href="contact.html">Contact</a>
+          <a href="policies.html">Policies</a>
         </div>
       </div>
+
       <div>
-        <h2>Quick Links</h2>
+        <h2>Follow us</h2>
+
+        <!-- Replace # with official club social-media links. -->
         <div class="footer-links">
-          <a href="#fixtures">Fixtures</a>
-          <a href="#shop">Shop</a>
-          <a href="#contact">Contact</a>
-          <a href="/privacy">Privacy</a>
+          <a href="#" aria-label="Bogong Rugby Club on Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            Instagram
+          </a>
+
+          <a href="#" aria-label="Bogong Rugby Club on Facebook">
+            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            Facebook
+          </a>
         </div>
-      </div>
-      <div>
-        <h2>Contact</h2>
-        <p>Phone: (03) 1234 5678</p>
-        <p>Email: info@bogongrugbyclub.com</p>
-        <p>Address: High Country, Victoria</p>
       </div>
     </div>
 
-    <div class="copyright">
-      <p>&copy; 2024 Bogong Rugby Club. All rights reserved.</p>
-    </div>
+    <p class="copyright">
+      © <span id="year"></span> Bogong Rugby Club. All rights reserved.
+    </p>
   </footer>
 
   <script src="script.js"></script>
