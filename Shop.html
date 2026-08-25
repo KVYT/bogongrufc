@@ -3,580 +3,1578 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bogong Rugby Club</title>
+  <meta name="description" content="Shop official Bogong Rugby Club merchandise, including jerseys, training gear and supporter items.">
+  <meta name="theme-color" content="#164403">
+  <title>Shop | Bogong Rugby Club</title>
 
-  <!-- Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --green: #164403;
+      --green-dark: #0d2c02;
+      --green-light: #b5e48c;
+      --red: #500402;
+      --gold: #ffcc00;
+      --gold-hover: #ffe066;
+      --page-bg: #f6f7f4;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #55616c;
+      --border: #dce3da;
+      --error: #a3001b;
+      --success: #0d5a22;
+      --shadow: 0 8px 24px rgba(13, 44, 2, 0.12);
+      --radius: 12px;
+    }
+
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: "Open Sans", Arial, sans-serif;
       margin: 0;
-      background: #f6f7f4;
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: "Open Sans", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     a {
+      color: inherit;
       text-decoration: none;
     }
 
-    /* ===== STICKY HEADER WITH GRADIENT ===== */
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 12px;
+      z-index: 2000;
+      padding: 10px 14px;
+      border-radius: 6px;
+      background: var(--gold);
+      color: #111;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Header */
+
     .main-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: linear-gradient(90deg, #a4df7e 0%, #f3f5f4 100%);
-      color: white;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      padding: 10px 30px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      gap: 24px;
+      min-height: 82px;
+      padding: 8px clamp(16px, 4vw, 46px);
+      background: linear-gradient(90deg, #a4df7e 0%, #f3f5f4 78%);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
     }
 
-    /* LEFT: LOGO + TITLE */
-    .header-left {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
       min-width: 0;
+      gap: 12px;
     }
 
-    .header-left img {
-      width: 70px;
-      height: auto;
-      flex-shrink: 0;
+    .brand img {
+      width: 64px;
+      height: 64px;
+      flex: 0 0 auto;
+      object-fit: contain;
     }
 
-    .header-left h1 {
-      margin: 0;
+    .brand-name {
+      color: var(--green);
       font-family: "Montserrat", Arial, sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-      white-space: nowrap;
+      font-size: clamp(1.05rem, 2vw, 1.5rem);
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
 
-    /* RIGHT: NAV WITH DROPDOWNS */
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--green);
+      cursor: pointer;
+    }
+
+    .menu-toggle:hover,
+    .menu-toggle:focus-visible {
+      background: var(--green);
+      color: #fff;
+      outline: none;
+    }
+
     .header-nav {
       display: flex;
       align-items: center;
-      gap: 10px;
     }
 
     .nav-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
     .nav-item {
       position: relative;
     }
 
-    .nav-link {
-      color: rgb(22, 68, 3);
-      padding: 8px 14px;
-      font-size: 0.95rem;
-      font-weight: 600;
+    .nav-link,
+    .dropdown-toggle {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      border-radius: 4px;
-      transition: background 0.2s ease, transform 0.1s ease;
+      gap: 7px;
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: transparent;
+      color: var(--green);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
     }
 
-    .nav-link:hover {
-      background: rgb(80, 4, 2);
+    .nav-link:hover,
+    .nav-link:focus-visible,
+    .dropdown-toggle:hover,
+    .dropdown-toggle:focus-visible,
+    .nav-item.open .dropdown-toggle {
+      background: var(--red);
+      color: #fff;
+      outline: none;
       transform: translateY(-1px);
     }
 
-    .nav-link i {
-      font-size: 0.85rem;
+    .nav-link.active {
+      background: var(--green);
+      color: #fff;
     }
 
-    /* DROPDOWN MENU */
+    .dropdown-toggle .fa-chevron-down {
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-item.open .dropdown-toggle .fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
     .dropdown-menu {
-      display: none;
       position: absolute;
+      top: calc(100% + 8px);
       right: 0;
-      top: 100%;
-      background: #ffffff;
-      color: #333;
-      min-width: 170px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      border-radius: 4px;
-      padding: 6px 0;
-      z-index: 999;
+      z-index: 1010;
+      min-width: 190px;
+      margin: 0;
+      padding: 6px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      list-style: none;
+    }
+
+    .dropdown-menu[hidden] {
+      display: none;
     }
 
     .dropdown-menu a {
       display: block;
-      padding: 8px 14px;
-      color: #222;
+      border-radius: 5px;
+      padding: 9px 10px;
+      color: var(--text);
       font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus-visible {
+      background: #edf6e8;
+      color: var(--green-dark);
+      outline: none;
+    }
+
+    /* Shop hero */
+
+    .page-hero {
+      padding: 76px 16px 88px;
+      background:
+        linear-gradient(90deg, rgba(13, 44, 2, 0.9), rgba(13, 44, 2, 0.56)),
+        url("footscray.jpg") center / cover no-repeat;
+      color: #fff;
+    }
+
+    .page-hero-content {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .page-hero h1 {
+      max-width: 720px;
+      margin: 0 0 12px;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.08;
+      text-transform: uppercase;
+    }
+
+    .page-hero p:not(.eyebrow) {
+      max-width: 700px;
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    /* Shared content */
+
+    .page-section {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 64px 0;
+    }
+
+    .shop-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 24px;
+      margin-top: -40px;
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 34px);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .shop-intro h2 {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    .shop-intro p {
+      max-width: 730px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cart-summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 156px;
+      border: 2px solid var(--green);
+      border-radius: 999px;
+      padding: 11px 16px;
+      background: #fff;
+      color: var(--green);
+      font-weight: 800;
       white-space: nowrap;
     }
 
-    .dropdown-menu a:hover {
-      background: #f0f0f0;
+    .cart-count {
+      display: inline-grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.78rem;
     }
 
-    .nav-item.dropdown:hover .dropdown-menu {
-      display: block;
+    .section-heading {
+      max-width: 750px;
+      margin: 0 auto 28px;
+      text-align: center;
     }
 
-    /* ===== RESPONSIVE HEADER ===== */
-    @media (max-width: 800px) {
-      .main-header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 15px;
-      }
-
-      .header-left {
-        margin-bottom: 8px;
-      }
-
-      .header-left h1 {
-        font-size: 1.4rem;
-      }
-
-      .header-nav {
-        width: 100%;
-      }
-
-      .nav-list {
-        flex-wrap: wrap;
-        gap: 4px;
-      }
-
-      .nav-link {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-      }
-
-      .dropdown-menu {
-        right: auto;
-        left: 0;
-      }
+    .section-heading h2 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
     }
 
-    /* ===== FULL-WIDTH HERO SLIDESHOW ===== */
-    img {
-      vertical-align: middle;
+    .section-heading .eyebrow {
+      color: var(--red);
     }
 
-    .container {
-      position: relative;
-      width: 100%;
-      height: 70vh; /* Hero height - adjust if you like */
+    .section-heading p:not(.eyebrow) {
       margin: 0;
-      padding: 0;
+      color: var(--muted);
+    }
+
+    /* Filter controls */
+
+    .filter-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .filter-button {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 15px;
+      background: #fff;
+      color: var(--green);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 800;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button:focus-visible,
+    .filter-button.active {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+      outline: none;
+    }
+
+    /* Product cards */
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
-      background: #000;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 3px 12px rgba(13, 44, 2, 0.07);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .mySlides {
+    .product-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-5px);
+    }
+
+    .product-card[hidden] {
       display: none;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      inset: 0;
     }
 
-    .mySlides img {
+    .product-image {
+      position: relative;
+      height: 235px;
+      overflow: hidden;
+      background: #e6eee3;
+    }
+
+    .product-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    /* Fade animation on slides */
-    .fade {
-      animation: fadeSlide 1s ease-in-out;
-    }
-
-    @keyframes fadeSlide {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    /* DARK OVERLAY ON TOP OF IMAGES */
-    .hero-overlay {
+    .product-badge {
       position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45); /* darkness level */
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    /* HERO TEXT + BUTTON */
-    .hero-content {
-      position: absolute;
-      z-index: 2;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-      color: #fff;
-    }
-
-    .hero-content h2 {
-      font-family: "Montserrat", Arial, sans-serif;
-      font-size: 2.4rem;
-      margin: 0 0 10px 0;
-      letter-spacing: 2px;
+      top: 12px;
+      left: 12px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: var(--gold);
+      color: #1b1b1b;
+      font-size: 0.75rem;
+      font-weight: 800;
       text-transform: uppercase;
     }
 
-    .hero-content p {
-      max-width: 600px;
-      margin: 0 0 20px 0;
+    .product-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .product-category {
+      margin: 0 0 6px;
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .product-name {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.2rem;
+    }
+
+    .product-description {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .product-price {
+      margin: auto 0 16px;
+      color: var(--text);
+      font-size: 1.12rem;
+      font-weight: 800;
+    }
+
+    .product-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .product-options {
+      width: 100%;
+      border: 1px solid #b7c0b5;
+      border-radius: 7px;
+      padding: 10px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      padding: 10px 18px;
+      background: var(--gold);
+      color: #1b1b1b;
+      cursor: pointer;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: var(--gold-hover);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .button-secondary {
+      border-color: var(--green);
+      background: transparent;
+      color: var(--green);
+    }
+
+    .button-secondary:hover,
+    .button-secondary:focus-visible {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .sold-out {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    /* Cart */
+
+    .cart-section {
+      background: #eaf4e5;
+    }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(310px, 0.8fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .cart-panel,
+    .order-form {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 32px);
+      background: var(--surface);
+      box-shadow: 0 3px 12px rgba(13, 44, 2, 0.07);
+    }
+
+    .cart-panel h2,
+    .order-form h2 {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.55rem;
+    }
+
+    .cart-empty {
+      margin: 18px 0 0;
+      color: var(--muted);
+    }
+
+    .cart-items {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .cart-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .cart-item h3 {
+      margin: 0 0 3px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
       font-size: 1rem;
     }
 
-    .hero-btn {
-      display: inline-block;
-      padding: 10px 24px;
-      background: #ffcc00;
-      color: #222;
-      font-weight: 700;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-      pointer-events: auto;
+    .cart-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.87rem;
     }
 
-    .hero-btn:hover {
-      background: #ffe066;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 14px rgba(0,0,0,0.45);
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    @media (max-width: 600px) {
-      .hero-content h2 {
-        font-size: 1.8rem;
-      }
-
-      .hero-content p {
-        font-size: 0.9rem;
-      }
-    }
-
-    /* SLIDESHOW CONTROLS */
-    .prev,
-    .next {
+    .quantity-button,
+    .remove-button {
+      display: inline-grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--green);
       cursor: pointer;
-      position: absolute;
-      top: 50%;
-      padding: 16px;
-      margin-top: -22px;
-      color: white;
-      font-weight: bold;
-      font-size: 20px;
-      user-select: none;
-      background: rgba(0,0,0,0.3);
-      border-radius: 3px;
-      z-index: 3;
+      font-weight: 800;
     }
 
-    .next {
-      right: 0;
-    }
-
-    .prev:hover,
-    .next:hover {
-      background: rgba(0,0,0,0.6);
-    }
-
-    .numbertext {
-      color: #f2f2f2;
-      font-size: 12px;
-      padding: 8px 12px;
-      position: absolute;
-      top: 0;
-      z-index: 3;
-    }
-
-    .caption-container {
-      text-align: center;
-      background-color: #222;
-      padding: 8px 16px;
-      color: white;
-      font-size: 14px;
-    }
-
-    /* THUMBNAIL STRIP UNDER HERO */
-.row {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  max-width: 1000px;
-  margin: 10px auto ;
-}
-
-.column {
-  flex: 1 1 0;
-  float: left;
-  width: 20%;
-  padding: 2px;
-}
-
-.column img {
-  width: 100%;
-  height: 110px;        /* make thumbs a bit taller */
-  object-fit: cover;    /* keeps them nicely cropped */
-  border-radius: 3px;
-}
-
-/* Smaller thumbs on mobile */
-@media (max-width: 600px) {
-  .column img {
-    height: 70px;
-  }
-}
-
-
-    .demo {
-      opacity: 0.6;
-    }
-
-    .active,
-    .demo:hover {
-      opacity: 1;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #004d00;
+    .quantity-button:hover,
+    .quantity-button:focus-visible,
+    .remove-button:hover,
+    .remove-button:focus-visible {
+      border-color: var(--green);
+      background: var(--green);
       color: #fff;
-      text-align: center;
-      padding: 10px 0;
-      margin-top: 30px;
-      font-size: 14px;
+      outline: none;
+    }
+
+    .remove-button {
+      color: var(--red);
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 20px;
+      border-top: 2px solid var(--green);
+      padding-top: 14px;
+      color: var(--green-dark);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    /* Order form */
+
+    .order-form p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--green-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid #b7c0b5;
+      border-radius: 7px;
+      padding: 10px 11px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    .form-group textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+      outline: 3px solid rgba(22, 68, 3, 0.18);
+    }
+
+    .form-message {
+      display: none;
+      margin-top: 15px;
+      border-radius: 7px;
+      padding: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .form-message.error {
+      display: block;
+      border: 1px solid #f0b6c0;
+      background: #fff1f3;
+      color: var(--error);
+    }
+
+    .form-message.success {
+      display: block;
+      border: 1px solid #abddb6;
+      background: #eefaf0;
+      color: var(--success);
+    }
+
+    /* Footer */
+
+    .site-footer {
+      padding: 40px 16px 18px;
+      background: var(--green-dark);
+      color: #fff;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 30px;
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .footer-content h2 {
+      margin: 0 0 10px;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .footer-content p {
+      margin: 0 0 8px;
+      color: #d5e4d0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #fff;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--gold);
+      outline: none;
+    }
+
+    .copyright {
+      width: min(1120px, 100%);
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: #c5d9bd;
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 1000px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cart-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .main-header {
+        flex-wrap: wrap;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        margin-left: auto;
+      }
+
+      .header-nav {
+        display: none;
+        width: 100%;
+      }
+
+      .header-nav.open {
+        display: block;
+      }
+
+      .nav-list {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 8px 0 4px;
+      }
+
+      .nav-item {
+        width: 100%;
+      }
+
+      .nav-link,
+      .dropdown-toggle {
+        width: 100%;
+        justify-content: space-between;
+        padding: 12px;
+      }
+
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        margin-top: 3px;
+        box-shadow: none;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .main-header {
+        min-height: 74px;
+        padding: 7px 16px;
+      }
+
+      .brand img {
+        width: 54px;
+        height: 54px;
+      }
+
+      .brand-name {
+        max-width: 215px;
+        font-size: 1rem;
+      }
+
+      .page-hero {
+        padding: 60px 16px 74px;
+      }
+
+      .page-section {
+        padding: 48px 0;
+      }
+
+      .shop-intro {
+        grid-template-columns: 1fr;
+        margin-top: -30px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- HEADER -->
   <header class="main-header">
-    <div class="header-left">
-      <img src="logo-6.png" alt="Bogong Rugby Club Logo">
-      <h1>BOGONG RUGBY CLUB</h1>
-    </div>
+    <a class="brand" href="index.html" aria-label="Bogong Rugby Club home">
+      <img src="logo-6.png" alt="Bogong Rugby Club logo">
+      <span class="brand-name">Bogong Rugby Club</span>
+    </a>
 
-    <nav class="header-nav">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <nav class="header-nav" id="main-navigation" aria-label="Main navigation">
       <ul class="nav-list">
         <li class="nav-item">
-          <a href="index.html" class="nav-link"><i class="fa fa-home"></i> Home</a>
+          <a href="index.html" class="nav-link">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            Home
+          </a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a href="Teams.html" class="nav-link">Teams <i class="fa fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="#">Men's XV</a>
-            <a href="#">Women's XV</a>
-            <a href="#">Sevens Squad</a>
-            <a href="#">Juniors</a>
-          </div>
+        <li class="nav-item has-dropdown">
+          <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="teams-menu">
+            Teams
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="teams-menu" hidden>
+            <li><a href="Teams.html">All teams</a></li>
+            <li><a href="Teams.html#mens">Men's XV</a></li>
+            <li><a href="Teams.html#womens">Women's Rugby</a></li>
+            <li><a href="Teams.html#sevens">Sevens Squad</a></li>
+            <li><a href="Teams.html#juniors">Juniors</a></li>
+          </ul>
         </li>
 
-        <li class="nav-item dropdown">
-          <a href="Fixtures.html" class="nav-link">Fixtures <i class="fa fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="#">Upcoming Matches</a>
-            <a href="#">Tournaments</a>
-            <a href="#">Training Schedule</a>
-          </div>
+        <li class="nav-item has-dropdown">
+          <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="fixtures-menu">
+            Fixtures
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="fixtures-menu" hidden>
+            <li><a href="Fixtures.html">Upcoming matches</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="tournaments.html">Tournaments</a></li>
+            <li><a href="training.html">Training schedule</a></li>
+          </ul>
         </li>
 
-        <li class="nav-item dropdown">
-          <a href="Club.html" class="nav-link">Club <i class="fa fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="#">About</a>
-            <a href="#">Committee</a>
-            <a href="#">Policies</a>
-          </div>
-        </li>
+        <li class="nav-item has-dropdown">
+          <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="club-menu">
+            Club
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
 
-        <li class="nav-item dropdown">
-          <a href="Shop.html" class="nav-link">Shop <i class="fa fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="#">Merchandise</a>
-            <a href="#">Jerseys</a>
-            <a href="#">Accessories</a>
-          </div>
+          <ul class="dropdown-menu" id="club-menu" hidden>
+            <li><a href="About.html">About us</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="policies.html">Policies</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+          </ul>
         </li>
 
         <li class="nav-item">
-          <a href="Contact.html" class="nav-link"><i class="fa fa-envelope"></i> Contact</a>
+          <a href="Shop.html" class="nav-link active" aria-current="page">
+            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+            Shop
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="Contact.html" class="nav-link">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            Contact
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="Join.html" class="nav-link">
+            <i class="fa-solid fa-person-running" aria-hidden="true"></i>
+            Join
+          </a>
         </li>
       </ul>
     </nav>
   </header>
 
-  <!-- HERO SLIDESHOW -->
-  <div class="container" id="slideshow-container">
-    <div class="mySlides">
-      <div class="numbertext">1 / 5</div>
-      <img src="swanhill.jpg" alt="Swan Hill Tournament">
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <p class="eyebrow">Wear the colours</p>
+        <h1>Bogong shop</h1>
+        <p>
+          Support the club and represent the Bogong family with official teamwear, training gear and supporter merchandise.
+        </p>
+      </div>
+    </section>
+
+    <div class="page-section" style="padding-bottom: 0;">
+      <section class="shop-intro" aria-labelledby="shop-intro-title">
+        <div>
+          <h2 id="shop-intro-title">Club merchandise</h2>
+          <p>
+            Add items to your order request, then send it to the club. A committee member can confirm availability, collection details and payment options.
+          </p>
+        </div>
+
+        <a class="cart-summary" href="#cart">
+          <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+          Cart
+          <span id="cart-count" class="cart-count">0</span>
+        </a>
+      </section>
     </div>
 
-    <div class="mySlides">
-      <div class="numbertext">2 / 5</div>
-      <img src="swanhill-2.jpg" alt="Swan Hill Team Huddle">
+    <section class="page-section" aria-labelledby="products-title">
+      <div class="section-heading">
+        <p class="eyebrow">Shop Bogong</p>
+        <h2 id="products-title">Merchandise</h2>
+        <p>Replace the sample images, prices and product details with your official club products before publishing.</p>
+      </div>
+
+      <div class="filter-list" aria-label="Filter products">
+        <button type="button" class="filter-button active" data-filter="all">All products</button>
+        <button type="button" class="filter-button" data-filter="apparel">Apparel</button>
+        <button type="button" class="filter-button" data-filter="headwear">Headwear</button>
+        <button type="button" class="filter-button" data-filter="supporter">Supporter gear</button>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card" data-category="apparel">
+          <div class="product-image">
+            <img src="footscray.jpg" alt="Bogong Rugby Club jersey example" loading="lazy">
+            <span class="product-badge">Popular</span>
+          </div>
+
+          <div class="product-content">
+            <p class="product-category">Apparel</p>
+            <h3 class="product-name">Bogong Playing Jersey</h3>
+            <p class="product-description">Official Bogong Rugby Club jersey. Confirm player and supporter sizes before ordering.</p>
+            <p class="product-price">$80.00</p>
+
+            <div class="product-actions">
+              <select class="product-options" aria-label="Choose a jersey size">
+                <option value="Size not selected">Choose a size</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="2XL">2XL</option>
+              </select>
+
+              <button class="button add-to-cart" type="button" data-name="Bogong Playing Jersey" data-price="80">
+                Add to order
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="apparel">
+          <div class="product-image">
+            <img src="swanhill-2.jpg" alt="Bogong Rugby Club hoodie example" loading="lazy">
+          </div>
+
+          <div class="product-content">
+            <p class="product-category">Apparel</p>
+            <h3 class="product-name">Bogong Club Hoodie</h3>
+            <p class="product-description">Warm club hoodie for training nights, travel and supporting Bogong on match day.</p>
+            <p class="product-price">$65.00</p>
+
+            <div class="product-actions">
+              <select class="product-options" aria-label="Choose a hoodie size">
+                <option value="Size not selected">Choose a size</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="2XL">2XL</option>
+              </select>
+
+              <button class="button add-to-cart" type="button" data-name="Bogong Club Hoodie" data-price="65">
+                Add to order
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="apparel">
+          <div class="product-image">
+            <img src="line-out pic.jpg" alt="Bogong Rugby Club training shirt example" loading="lazy">
+          </div>
+
+          <div class="product-content">
+            <p class="product-category">Apparel</p>
+            <h3 class="product-name">Training T-Shirt</h3>
+            <p class="product-description">Lightweight Bogong training shirt for the paddock, gym or everyday wear.</p>
+            <p class="product-price">$35.00</p>
+
+            <div class="product-actions">
+              <select class="product-options" aria-label="Choose a training shirt size">
+                <option value="Size not selected">Choose a size</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="2XL">2XL</option>
+              </select>
+
+              <button class="button add-to-cart" type="button" data-name="Bogong Training T-Shirt" data-price="35">
+                Add to order
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="headwear">
+          <div class="product-image">
+            <img src="swanhill.jpg" alt="Bogong Rugby Club cap example" loading="lazy">
+          </div>
+
+          <div class="product-content">
+            <p class="product-category">Headwear</p>
+            <h3 class="product-name">Bogong Club Cap</h3>
+            <p class="product-description">A practical club cap for game day, travel and outdoor events.</p>
+            <p class="product-price">$30.00</p>
+
+            <div class="product-actions">
+              <select class="product-options" aria-label="Choose a cap option">
+                <option value="One size">One size</option>
+              </select>
+
+              <button class="button add-to-cart" type="button" data-name="Bogong Club Cap" data-price="30">
+                Add to order
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="supporter">
+          <div class="product-image">
+            <img src="first-meeting.jpg" alt="Bogong Rugby Club supporter scarf example" loading="lazy">
+          </div>
+
+          <div class="product-content">
+            <p class="product-category">Supporter gear</p>
+            <h3 class="product-name">Bogong Supporter Scarf</h3>
+            <p class="product-description">Show your colours at tournaments, away games and community events.</p>
+            <p class="product-price">$25.00</p>
+
+            <div class="product-actions">
+              <select class="product-options" aria-label="Choose a supporter scarf option">
+                <option value="One size">One size</option>
+              </select>
+
+              <button class="button add-to-cart" type="button" data-name="Bogong Supporter Scarf" data-price="25">
+                Add to order
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="supporter">
+          <div class="product-image">
+            <img src="logo-6.png" alt="Bogong Rugby Club logo on a supporter sticker pack" loading="lazy">
+            <span class="product-badge">Coming soon</span>
+          </div>
+
+          <div class="product-content">
+            <p class="product-category">Supporter gear</p>
+            <h3 class="product-name">Sticker Pack</h3>
+            <p class="product-description">A future supporter pack featuring Bogong Rugby Club logo stickers.</p>
+            <p class="product-price">Price to be confirmed</p>
+
+            <div class="product-actions">
+              <button class="button sold-out" type="button" disabled>
+                Coming soon
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cart-section" id="cart">
+      <div class="page-section cart-layout">
+        <section class="cart-panel" aria-labelledby="cart-title">
+          <h2 id="cart-title">Your order request</h2>
+          <p id="cart-empty" class="cart-empty">Your order request is empty. Add club merchandise above to get started.</p>
+          <div id="cart-items" class="cart-items" aria-live="polite"></div>
+
+          <div class="cart-total">
+            <span>Estimated total</span>
+            <span id="cart-total">$0.00</span>
+          </div>
+        </section>
+
+        <section class="order-form" aria-labelledby="order-title">
+          <h2 id="order-title">Send your order request</h2>
+          <p>
+            This does not take payment online. The club will confirm stock availability, payment and collection arrangements with you.
+          </p>
+
+          <form id="order-form">
+            <div class="form-group">
+              <label for="order-name">Full name *</label>
+              <input id="order-name" name="fullName" type="text" autocomplete="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="order-email">Email address *</label>
+              <input id="order-email" name="email" type="email" autocomplete="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="order-phone">Phone number</label>
+              <input id="order-phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+              <label for="order-notes">Order notes</label>
+              <textarea id="order-notes" name="notes" placeholder="For example: collection preference, alternate sizes or questions."></textarea>
+            </div>
+
+            <input id="order-items" name="orderItems" type="hidden">
+            <input id="order-total" name="orderTotal" type="hidden">
+
+            <button id="order-submit" class="button" type="submit">
+              Send order request
+            </button>
+
+            <div id="order-message" class="form-message" role="status" aria-live="polite"></div>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <h2>Bogong Rugby Club</h2>
+        <p>Community rugby in the high country.</p>
+        <p>Stronger together. Bogong forever.</p>
+      </div>
+
+      <div>
+        <h2>Club links</h2>
+        <div class="footer-links">
+          <a href="Fixtures.html">Fixtures</a>
+          <a href="Teams.html">Teams</a>
+          <a href="Join.html">Join</a>
+          <a href="Contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h2>Follow us</h2>
+
+        <!-- Replace # with official club social-media URLs. -->
+        <div class="footer-links">
+          <a href="#" aria-label="Bogong Rugby Club on Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            Instagram
+          </a>
+
+          <a href="#" aria-label="Bogong Rugby Club on Facebook">
+            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            Facebook
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="mySlides">
-      <div class="numbertext">3 / 5</div>
-      <img src="line-out pic.jpg" alt="Bogong Lineout Action">
-    </div>
-
-    <div class="mySlides">
-      <div class="numbertext">4 / 5</div>
-      <img src="footscray.jpg" alt="Footscray Match">
-    </div>
-
-    <div class="mySlides">
-      <div class="numbertext">5 / 5</div>
-      <img src="first-meeting.jpg" alt="First Bogong Club Meeting">
-    </div>
-
-    <!-- Overlay + Title/Text/Button -->
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-      <h2>Bogong Rugby Club</h2>
-      <p>Building community, culture and rugby in the high country — on and off the field.</p>
-      <a href="#join" class="hero-btn">Join the Bogong Family</a>
-    </div>
-
-   <!-- Controls -->
-    <a class="prev" onclick="plusSlides(-1)">❮</a>
-    <a class="next" onclick="plusSlides(1)">❯</a>
-  </div>
-
-  <!-- OPTIONAL CAPTION + THUMBNAILS UNDER HERO -->
-  <div class="caption-container">
-    <p id="caption"></p>
-  </div>
-
-  <div class="row">
-    <div class="column">
-      <img class="demo cursor" src="swanhill.jpg" onclick="currentSlide(1)" alt="Swan Hill Tournament">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="swanhill-2.jpg" onclick="currentSlide(2)" alt="Swan Hill Team Huddle">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="line-out pic.jpg" onclick="currentSlide(3)" alt="Bogong Lineout Action">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="footscray.jpg" onclick="currentSlide(4)" alt="Footscray Match">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="first-meeting.jpg" onclick="currentSlide(5)" alt="First Bogong Club Meeting">
-    </div>
-  </div>
-
-    <main style="max-width: 1000px; margin: 40px auto; padding: 0 16px;">
-  <h2>Our Teams</h2>
-  <p>Welcome to Bogong Rugby Club’s teams page.</p>
-
-  <h3>Sevens Squad</h3>
-  <p>Info about your 7s team, tournaments, training nights, coaches, etc.</p>
-
-  <h3>Men's XV</h3>
-  <p>Details about your 15s team…</p>
-
-  <h3>Juniors</h3>
-  <p>Future section for kids/youth teams.</p>
-</main>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Bogong Rugby Club. All rights reserved.</p>
+    <p class="copyright">
+      © <span id="year"></span> Bogong Rugby Club. All rights reserved.
+    </p>
   </footer>
 
-  <!-- SLIDESHOW SCRIPT -->
   <script>
-    let slideIndex = 1;
-    let autoSlideInterval;
-    let slideSpeed = 5000; // 5000ms = 5 seconds per slide
+    /* Mobile navigation */
 
-    showSlides(slideIndex);
-    startAutoSlide();
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNavigation = document.querySelector(".header-nav");
+    const dropdowns = document.querySelectorAll(".has-dropdown");
 
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNavigation.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
+        : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    });
+
+    dropdowns.forEach((dropdown) => {
+      const toggle = dropdown.querySelector(".dropdown-toggle");
+      const menu = dropdown.querySelector(".dropdown-menu");
+
+      toggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        const willOpen = !dropdown.classList.contains("open");
+
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+
+        if (willOpen) {
+          dropdown.classList.add("open");
+          toggle.setAttribute("aria-expanded", "true");
+          menu.hidden = false;
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".has-dropdown")) {
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+      }
+    });
+
+    /* Product filters */
+
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const products = document.querySelectorAll(".product-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+
+        filterButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+
+        products.forEach((product) => {
+          const matches = filter === "all" || product.dataset.category === filter;
+          product.hidden = !matches;
+        });
+      });
+    });
+
+    /* Shopping cart */
+
+    const cart = [];
+    const cartItemsElement = document.getElementById("cart-items");
+    const cartEmptyElement = document.getElementById("cart-empty");
+    const cartCountElement = document.getElementById("cart-count");
+    const cartTotalElement = document.getElementById("cart-total");
+    const orderItemsInput = document.getElementById("order-items");
+    const orderTotalInput = document.getElementById("order-total");
+
+    function currency(amount) {
+      return new Intl.NumberFormat("en-AU", {
+        style: "currency",
+        currency: "AUD"
+      }).format(amount);
     }
 
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
+    function updateCart() {
+      cartItemsElement.replaceChildren();
+
+      const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+      cartCountElement.textContent = itemCount;
+      cartTotalElement.textContent = currency(total);
+      cartEmptyElement.hidden = cart.length > 0;
+
+      cart.forEach((item, index) => {
+        const row = document.createElement("div");
+        row.className = "cart-item";
+
+        const details = document.createElement("div");
+        const title = document.createElement("h3");
+        title.textContent = item.name;
+
+        const description = document.createElement("p");
+        description.textContent = `${item.option} · ${currency(item.price)} each`;
+
+        details.append(title, description);
+
+        const controls = document.createElement("div");
+        controls.className = "cart-item-controls";
+
+        const decreaseButton = document.createElement("button");
+        decreaseButton.type = "button";
+        decreaseButton.className = "quantity-button";
+        decreaseButton.textContent = "−";
+        decreaseButton.setAttribute("aria-label", `Decrease quantity of ${item.name}`);
+
+        decreaseButton.addEventListener("click", () => {
+          if (item.quantity > 1) {
+            item.quantity -= 1;
+          } else {
+            cart.splice(index, 1);
+          }
+
+          updateCart();
+        });
+
+        const quantity = document.createElement("span");
+        quantity.textContent = item.quantity;
+        quantity.setAttribute("aria-label", `Quantity ${item.quantity}`);
+
+        const increaseButton = document.createElement("button");
+        increaseButton.type = "button";
+        increaseButton.className = "quantity-button";
+        increaseButton.textContent = "+";
+        increaseButton.setAttribute("aria-label", `Increase quantity of ${item.name}`);
+
+        increaseButton.addEventListener("click", () => {
+          item.quantity += 1;
+          updateCart();
+        });
+
+        const removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.className = "remove-button";
+        removeButton.innerHTML = '<i class="fa-solid fa-trash" aria-hidden="true"></i>';
+        removeButton.setAttribute("aria-label", `Remove ${item.name} from order`);
+
+        removeButton.addEventListener("click", () => {
+          cart.splice(index, 1);
+          updateCart();
+        });
+
+        controls.append(decreaseButton, quantity, increaseButton, removeButton);
+        row.append(details, controls);
+        cartItemsElement.appendChild(row);
+      });
+
+      const orderSummary = cart.map((item) => {
+        return `${item.quantity} x ${item.name} (${item.option}) — ${currency(item.price * item.quantity)}`;
+      });
+
+      orderItemsInput.value = orderSummary.join("\n");
+      orderTotalInput.value = currency(total);
     }
 
-    function showSlides(n) {
-      let i;
-      const slides = document.getElementsByClassName("mySlides");
-      const dots = document.getElementsByClassName("demo");
-      const captionText = document.getElementById("caption");
+    document.querySelectorAll(".add-to-cart").forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".product-card");
+        const optionSelect = card.querySelector(".product-options");
+        const name = button.dataset.name;
+        const price = Number(button.dataset.price);
+        const option = optionSelect ? optionSelect.value : "Standard";
 
-      if (n > slides.length) { slideIndex = 1; }
-      if (n < 1) { slideIndex = slides.length; }
+        const existingItem = cart.find(
+          (item) => item.name === name && item.option === option
+        );
 
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-        slides[i].classList.remove("fade");
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            name,
+            price,
+            option,
+            quantity: 1
+          });
+        }
+
+        updateCart();
+
+        const originalText = button.textContent;
+        button.textContent = "Added";
+        button.disabled = true;
+
+        window.setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+        }, 1000);
+      });
+    });
+
+    /* Order request form */
+
+    const ORDER_SCRIPT_URL = "";
+    const orderForm = document.getElementById("order-form");
+    const orderSubmit = document.getElementById("order-submit");
+    const orderMessage = document.getElementById("order-message");
+
+    function showOrderMessage(message, type) {
+      orderMessage.textContent = message;
+      orderMessage.className = `form-message ${type}`;
+    }
+
+    orderForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (cart.length === 0) {
+        showOrderMessage(
+          "Your order request is empty. Please add at least one item before sending it.",
+          "error"
+        );
+        return;
       }
 
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
+      if (!orderForm.checkValidity()) {
+        orderForm.reportValidity();
+        return;
       }
 
-      slides[slideIndex - 1].style.display = "block";
-      slides[slideIndex - 1].classList.add("fade");
+      orderSubmit.disabled = true;
+      orderSubmit.textContent = "Sending...";
+      orderMessage.className = "form-message";
+      orderMessage.textContent = "";
 
-      if (dots[slideIndex - 1]) {
-        dots[slideIndex - 1].className += " active";
+      const formData = new FormData(orderForm);
+
+      try {
+        /*
+          To connect a Google Apps Script form backend:
+          1. Paste your deployed Web App URL into ORDER_SCRIPT_URL above.
+          2. Ensure your Apps Script doPost(e) accepts regular FormData fields.
+        */
+
+        if (!ORDER_SCRIPT_URL) {
+          const mailSubject = encodeURIComponent("Bogong Rugby Club Shop Order Request");
+          const mailBody = encodeURIComponent(
+            `Name: ${formData.get("fullName")}\n` +
+            `Email: ${formData.get("email")}\n` +
+            `Phone: ${formData.get("phone") || "Not provided"}\n\n` +
+            `Order:\n${formData.get("orderItems")}\n\n` +
+            `Estimated total: ${formData.get("orderTotal")}\n\n` +
+            `Notes:\n${formData.get("notes") || "None"}`
+          );
+
+          window.location.href =
+            `mailto:bogongrugbyclub@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+
+          showOrderMessage(
+            "Your email app should now open with your order request. Please send the email to complete your enquiry.",
+            "success"
+          );
+
+          orderSubmit.disabled = false;
+          orderSubmit.textContent = "Send order request";
+          return;
+        }
+
+        const response = await fetch(ORDER_SCRIPT_URL, {
+          method: "POST",
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error(`Order request failed: ${response.status}`);
+        }
+
+        showOrderMessage(
+          "Thank you — your order request has been sent. The club will contact you to confirm stock, payment and collection.",
+          "success"
+        );
+
+        cart.splice(0, cart.length);
+        updateCart();
+        orderForm.reset();
+      } catch (error) {
+        console.error("Order request error:", error);
+
+        showOrderMessage(
+          "We could not send your order request right now. Please email bogongrugbyclub@gmail.com directly.",
+          "error"
+        );
+      } finally {
+        orderSubmit.disabled = false;
+        orderSubmit.textContent = "Send order request";
       }
+    });
 
-      if (captionText) {
-        captionText.innerHTML = dots[slideIndex - 1]?.alt || "";
-      }
-    }
-
-    // --- AUTO SLIDE ---
-    function startAutoSlide() {
-      autoSlideInterval = setInterval(() => {
-        plusSlides(1);
-      }, slideSpeed);
-    }
-
-    function stopAutoSlide() {
-      clearInterval(autoSlideInterval);
-    }
-
-    // --- PAUSE ON HOVER ---
-    const slideshowArea = document.getElementById("slideshow-container");
-
-    slideshowArea.addEventListener("mouseenter", stopAutoSlide);
-    slideshowArea.addEventListener("mouseleave", startAutoSlide);
+    document.getElementById("year").textContent = new Date().getFullYear();
+    updateCart();
   </script>
-
 </body>
 </html>
