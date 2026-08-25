@@ -268,7 +268,7 @@
       font-size: 1.08rem;
     }
 
-    /* Content */
+    /* General content */
 
     .page-section {
       width: min(1120px, calc(100% - 32px));
@@ -564,18 +564,6 @@
       transform: translateY(-2px);
     }
 
-    .button-outline {
-      border-color: var(--green);
-      background: transparent;
-      color: var(--green);
-    }
-
-    .button-outline:hover,
-    .button-outline:focus-visible {
-      background: var(--green);
-      color: #fff;
-    }
-
     /* Footer */
 
     .site-footer {
@@ -798,9 +786,7 @@
 
           <ul class="dropdown-menu" id="fixtures-menu" hidden>
             <li><a href="fixtures.html">Upcoming matches</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="tournaments.html">Tournaments</a></li>
-            <li><a href="training.html">Training schedule</a></li>
+            <li><a href="contact.html">Training information</a></li>
           </ul>
         </li>
 
@@ -814,7 +800,6 @@
             <li><a href="about.html" aria-current="page">About us</a></li>
             <li><a href="committee.html">Committee</a></li>
             <li><a href="policies.html">Policies</a></li>
-            <li><a href="sponsors.html">Sponsors</a></li>
           </ul>
         </li>
 
@@ -1108,6 +1093,29 @@
     });
 
     document.addEventListener("click", (event) => {
+      if (!event.target.closest(".has-dropdown")) {
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+      }
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
 
 
