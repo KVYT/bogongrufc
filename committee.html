@@ -3,419 +3,935 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bogong Rugby Club – Committee</title>
+  <meta name="description" content="Meet the Bogong Rugby Club committee — volunteers helping grow community rugby in the high country.">
+  <meta name="theme-color" content="#164403">
+  <title>Committee | Bogong Rugby Club</title>
 
-  <!-- Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * { box-sizing: border-box; }
-
-    body {
-      font-family: "Open Sans", Arial, sans-serif;
-      margin: 0;
-      background: #f6f7f4;
-      color: #222;
+    :root {
+      --green: #164403;
+      --green-dark: #0d2c02;
+      --green-light: #b5e48c;
+      --red: #500402;
+      --gold: #ffcc00;
+      --gold-hover: #ffe066;
+      --page-bg: #f6f7f4;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #55616c;
+      --border: #dce3da;
+      --shadow: 0 8px 24px rgba(13, 44, 2, 0.12);
+      --radius: 12px;
     }
 
-    a { text-decoration: none; color: inherit; }
+    * {
+      box-sizing: border-box;
+    }
 
-    /* ===== HEADER (same style as index) ===== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: "Open Sans", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 12px;
+      z-index: 2000;
+      padding: 10px 14px;
+      border-radius: 6px;
+      background: var(--gold);
+      color: #111;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Header */
+
     .main-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: linear-gradient(90deg, hsl(96, 60%, 68%) 0%, #f3f5f4 100%);
-      color: white;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      padding: 10px 30px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      gap: 24px;
+      min-height: 82px;
+      padding: 8px clamp(16px, 4vw, 46px);
+      background: linear-gradient(90deg, #b5e48c 0%, #f3f5f4 78%);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
     }
 
-    .header-left {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
       min-width: 0;
+      gap: 12px;
     }
 
-    .header-left a { display: inline-block; }
+    .brand img {
+      width: 64px;
+      height: 64px;
+      flex: 0 0 auto;
+      object-fit: contain;
+    }
 
-    .header-left img {
-      width: 70px;
-      height: auto;
-      flex-shrink: 0;
+    .brand-name {
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.05rem, 2vw, 1.5rem);
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--green);
       cursor: pointer;
     }
 
-    .header-left h1 {
-      margin: 0;
-      font-family: "Montserrat", Arial, sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-      white-space: nowrap;
-      color: rgb(22, 68, 3);
+    .menu-toggle:hover,
+    .menu-toggle:focus-visible {
+      background: var(--green);
+      color: #fff;
+      outline: none;
     }
 
     .header-nav {
       display: flex;
       align-items: center;
-      gap: 10px;
     }
 
     .nav-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
-    .nav-item { position: relative; }
+    .nav-item {
+      position: relative;
+    }
 
-    .nav-link {
-      color: rgb(22, 68, 3);
-      padding: 8px 14px;
-      font-size: 0.95rem;
-      font-weight: 600;
+    .nav-link,
+    .dropdown-toggle {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      border-radius: 4px;
-      transition: background 0.2s ease, transform 0.1s ease, color 0.2s ease;
+      gap: 7px;
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: transparent;
+      color: var(--green);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
     }
 
-    .nav-link:hover {
-      background: rgb(80, 4, 2);
+    .nav-link:hover,
+    .nav-link:focus-visible,
+    .dropdown-toggle:hover,
+    .dropdown-toggle:focus-visible,
+    .nav-item.open .dropdown-toggle {
+      background: var(--red);
       color: #fff;
+      outline: none;
       transform: translateY(-1px);
     }
 
-    .nav-link.active {
-      background: rgb(80, 4, 2);
+    .dropdown-toggle.active {
+      background: var(--green);
       color: #fff;
     }
 
-    .nav-link i { font-size: 0.85rem; }
+    .dropdown-toggle .fa-chevron-down {
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-item.open .dropdown-toggle .fa-chevron-down {
+      transform: rotate(180deg);
+    }
 
     .dropdown-menu {
-      display: none;
       position: absolute;
+      top: calc(100% + 8px);
       right: 0;
-      top: 100%;
-      background: #ffffff;
-      color: #333;
-      min-width: 170px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      border-radius: 4px;
-      padding: 6px 0;
-      z-index: 999;
+      z-index: 1010;
+      min-width: 190px;
+      margin: 0;
+      padding: 6px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      list-style: none;
+    }
+
+    .dropdown-menu[hidden] {
+      display: none;
     }
 
     .dropdown-menu a {
       display: block;
-      padding: 8px 14px;
-      color: #222;
+      border-radius: 5px;
+      padding: 9px 10px;
+      color: var(--text);
       font-size: 0.9rem;
-      white-space: nowrap;
+      font-weight: 600;
     }
 
-    .dropdown-menu a:hover { background: #f0f0f0; }
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus-visible {
+      background: #edf6e8;
+      color: var(--green-dark);
+      outline: none;
+    }
 
-    .nav-item.dropdown:hover .dropdown-menu { display: block; }
+    /* Hero */
 
-    /* SEARCH BOX */
-    .nav-search {
+    .page-hero {
+      padding: 76px 16px 86px;
+      background:
+        linear-gradient(90deg, rgba(13, 44, 2, 0.9), rgba(13, 44, 2, 0.57)),
+        url("first-meeting.jpg") center / cover no-repeat;
+      color: #fff;
+    }
+
+    .page-hero-content {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .page-hero h1 {
+      max-width: 720px;
+      margin: 0 0 12px;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.08;
+      text-transform: uppercase;
+    }
+
+    .page-hero p:not(.eyebrow) {
+      max-width: 700px;
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    /* Committee content */
+
+    .page-section {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 64px 0;
+    }
+
+    .intro-panel {
+      margin-top: -40px;
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 34px);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .intro-panel h2 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    .intro-panel p {
+      max-width: 770px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .section-heading {
+      max-width: 740px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
+    }
+
+    .section-heading .eyebrow {
+      color: var(--red);
+    }
+
+    .section-heading p:not(.eyebrow) {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .committee-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      background: var(--surface);
+      box-shadow: 0 3px 12px rgba(13, 44, 2, 0.07);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .committee-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-5px);
+    }
+
+    .role-icon {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      border-radius: 50%;
+      background: #edf6e8;
+      color: var(--red);
+      font-size: 1.25rem;
+    }
+
+    .committee-role {
+      margin: 18px 0 4px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.22rem;
+    }
+
+    .committee-name {
+      margin: 0;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .committee-description {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .general-member-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .general-member {
+      border-left: 5px solid var(--gold);
+      padding: 16px 18px;
+      background: #fffdf4;
+    }
+
+    .general-member h3 {
+      margin: 0 0 4px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1rem;
+    }
+
+    .general-member p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* CTA */
+
+    .cta-section {
+      background: #eaf4e5;
+    }
+
+    .cta-content {
       display: flex;
       align-items: center;
-      margin-left: 15px;
-      background: rgb(5, 153, 24);
-      padding: 4px 8px;
-      border-radius: 20px;
+      justify-content: space-between;
+      gap: 24px;
     }
 
-    .nav-search input {
-      border: none;
-      outline: none;
-      background: transparent;
-      color: rgb(22, 68, 3);
-      width: 130px;
+    .cta-content h2 {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .cta-content p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      padding: 10px 20px;
+      background: var(--gold);
+      color: #1b1b1b;
       font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .nav-search input::placeholder { color: #aae79e; }
-
-    .nav-search button {
-      background: none;
-      border: none;
-      color: rgb(21, 143, 17);
-      cursor: pointer;
-      padding: 4px;
+    .button:hover,
+    .button:focus-visible {
+      background: var(--gold-hover);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      outline: none;
+      transform: translateY(-2px);
     }
 
-    .nav-search button:hover { color: #ffe680; }
+    /* Footer */
 
-    @media (max-width: 800px) {
+    .site-footer {
+      padding: 40px 16px 18px;
+      background: var(--green-dark);
+      color: #fff;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 30px;
+      width: min(1100px, 100%);
+      margin: 0 auto;
+    }
+
+    .footer-content h2 {
+      margin: 0 0 10px;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .footer-content p {
+      margin: 0 0 8px;
+      color: #d5e4d0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #fff;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--gold);
+      outline: none;
+    }
+
+    .copyright {
+      width: min(1100px, 100%);
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: #c5d9bd;
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 900px) {
       .main-header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 15px;
+        flex-wrap: wrap;
       }
 
-      .header-left { margin-bottom: 8px; }
-
-      .header-left h1 { font-size: 1.4rem; }
+      .menu-toggle {
+        display: inline-flex;
+        margin-left: auto;
+      }
 
       .header-nav {
+        display: none;
         width: 100%;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 6px;
+      }
+
+      .header-nav.open {
+        display: block;
       }
 
       .nav-list {
-        flex-wrap: wrap;
-        gap: 4px;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 8px 0 4px;
       }
 
-      .nav-link {
-        padding: 6px 10px;
-        font-size: 0.85rem;
+      .nav-item {
+        width: 100%;
+      }
+
+      .nav-link,
+      .dropdown-toggle {
+        width: 100%;
+        justify-content: space-between;
+        padding: 12px;
       }
 
       .dropdown-menu {
-        right: auto;
-        left: 0;
-      }
-
-      .nav-search {
+        position: static;
         width: 100%;
-        margin: 8px 0 0 0;
-        justify-content: center;
+        margin-top: 3px;
+        box-shadow: none;
       }
 
-      .nav-search input { width: 60%; }
-    }
-
-    /* ===== PAGE CONTENT ===== */
-    .page-wrapper {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 16px 40px;
-    }
-
-    .page-title {
-      font-family: "Montserrat", Arial, sans-serif;
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #004d00;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .page-intro {
-      font-size: 0.95rem;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-
-    .committee-section {
-      background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 20px;
-    }
-
-    .committee-header-row {
-      display: grid;
-      grid-template-columns: 1.5fr 2fr;
-      font-weight: 700;
-      border-bottom: 2px solid #e0e0e0;
-      padding-bottom: 8px;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
-
-    .committee-row {
-      display: grid;
-      grid-template-columns: 1.5fr 2fr;
-      padding: 6px 0;
-      border-bottom: 1px solid #f0f0f0;
-      font-size: 0.95rem;
-    }
-
-    .committee-row:last-child { border-bottom: none; }
-
-    .committee-name { font-weight: 600; }
-
-    .committee-role { color: #444; }
-
-    @media (max-width: 600px) {
-      .committee-header-row {
-        display: none; /* hide header on small screens */
+      .committee-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .committee-row {
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .main-header {
+        min-height: 74px;
+        padding: 7px 16px;
+      }
+
+      .brand img {
+        width: 54px;
+        height: 54px;
+      }
+
+      .brand-name {
+        max-width: 215px;
+        font-size: 1rem;
+      }
+
+      .page-hero {
+        padding: 60px 16px 74px;
+      }
+
+      .page-section {
+        padding: 48px 0;
+      }
+
+      .committee-grid,
+      .general-member-list,
+      .footer-content {
         grid-template-columns: 1fr;
-        padding: 10px 0;
       }
 
-      .committee-role {
-        margin-top: 2px;
-        font-size: 0.9rem;
-        color: #555;
+      .cta-content {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
 
-    /* ===== FOOTER ===== */
-    footer {
-      background: #004d00;
-      color: #fff;
-      text-align: center;
-      padding: 10px 0;
-      margin-top: 30px;
-      font-size: 14px;
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- HEADER -->
   <header class="main-header">
-    <div class="header-left">
-      <a href="index.html">
-        <img src="logo-6.png" alt="Bogong Rugby Club Logo">
-      </a>
-      <h1>BOGONG RUGBY CLUB</h1>
-    </div>
+    <a class="brand" href="index.html" aria-label="Bogong Rugby Club home">
+      <img src="logo-6.png" alt="Bogong Rugby Club logo">
+      <span class="brand-name">Bogong Rugby Club</span>
+    </a>
 
-    <nav class="header-nav">
-      <form class="nav-search">
-        <input type="text" placeholder="Search..." />
-        <button type="button"><i class="fa fa-search"></i></button>
-      </form>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
 
+    <nav class="header-nav" id="main-navigation" aria-label="Main navigation">
       <ul class="nav-list">
         <li class="nav-item">
-          <a href="index.html" class="nav-link"><i class="fa fa-home"></i> Home</a>
+          <a href="index.html" class="nav-link">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            Home
+          </a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a href="Teams.html" class="nav-link">Teams <i class="fa fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="Teams.html#mens">Men's XV</a>
-            <a href="Teams.html#womens">Women's XV</a>
-            <a href="Teams.html#sevens">Sevens Squad</a>
-            <a href="Teams.html#juniors">Juniors</a>
-          </div>
+        <li class="nav-item has-dropdown">
+          <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="teams-menu">
+            Teams
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="teams-menu" hidden>
+            <li><a href="Teams.html">All teams</a></li>
+            <li><a href="Teams.html#mens">Men's XV</a></li>
+            <li><a href="Teams.html#womens">Women's Rugby</a></li>
+            <li><a href="Teams.html#sevens">Sevens squad</a></li>
+            <li><a href="Teams.html#juniors">Juniors</a></li>
+          </ul>
         </li>
 
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link">Fixtures <i class="fa fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="#">Upcoming Matches</a>
-            <a href="#">Tournaments</a>
-            <a href="#">Training Schedule</a>
-          </div>
+        <li class="nav-item has-dropdown">
+          <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="fixtures-menu">
+            Fixtures
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="fixtures-menu" hidden>
+            <li><a href="Fixtures.html">Upcoming matches</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="tournaments.html">Tournaments</a></li>
+            <li><a href="training.html">Training schedule</a></li>
+          </ul>
         </li>
 
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link active">Club <i class="fa fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="index.html#about">About</a>
-            <a href="committee.html">Committee</a>
-            <a href="#">Policies</a>
-          </div>
-        </li>
+        <li class="nav-item has-dropdown">
+          <button class="dropdown-toggle active" type="button" aria-expanded="false" aria-controls="club-menu">
+            Club
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
 
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link">Shop <i class="fa fa-chevron-down"></i></a>
-          <div class="dropdown-menu">
-            <a href="#">Merchandise</a>
-            <a href="#">Jerseys</a>
-            <a href="#">Accessories</a>
-          </div>
+          <ul class="dropdown-menu" id="club-menu" hidden>
+            <li><a href="About.html">About us</a></li>
+            <li><a href="committee.html" aria-current="page">Committee</a></li>
+            <li><a href="policies.html">Policies</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+          </ul>
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link"><i class="fa fa-envelope"></i> Contact</a>
+          <a href="Shop.html" class="nav-link">
+            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+            Shop
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="Contact.html" class="nav-link">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            Contact
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="Join.html" class="nav-link">
+            <i class="fa-solid fa-person-running" aria-hidden="true"></i>
+            Join
+          </a>
         </li>
       </ul>
     </nav>
   </header>
 
-  <!-- PAGE CONTENT -->
-  <main class="page-wrapper">
-    <h2 class="page-title">Committee 2025</h2>
-    <p class="page-intro">
-      The Bogong Rugby Club committee is made up of volunteers who give their time, energy and
-      experience to help the club grow – on and off the field.
-    </p>
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <p class="eyebrow">Behind the club</p>
+        <h1>Committee</h1>
+        <p>
+          The Bogong Rugby Club committee is made up of volunteers who contribute their time, energy and experience to help the club grow on and off the field.
+        </p>
+      </div>
+    </section>
 
-    <section class="committee-section">
-      <div class="committee-header-row">
-        <div>Name</div>
-        <div>Role</div>
+    <div class="page-section" style="padding-bottom: 0;">
+      <section class="intro-panel" aria-labelledby="committee-intro-title">
+        <h2 id="committee-intro-title">Committee 2025</h2>
+        <p>
+          Our committee supports club operations, events, player development, sponsorship, fundraising and the inclusive community culture that makes Bogong Rugby Club special.
+        </p>
+      </section>
+    </div>
+
+    <section class="page-section" aria-labelledby="committee-title">
+      <div class="section-heading">
+        <p class="eyebrow">Club leadership</p>
+        <h2 id="committee-title">Meet the committee</h2>
+        <p>Replace the placeholder names below with the current appointed committee members.</p>
       </div>
 
-      <!-- Replace these with your real committee -->
-      <div class="committee-row">
-        <div class="committee-name">Name Here</div>
-        <div class="committee-role">Club President</div>
+      <div class="committee-grid">
+        <article class="committee-card">
+          <div class="role-icon">
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+          </div>
+          <h3 class="committee-role">Club President</h3>
+          <p class="committee-name">Name Here</p>
+          <p class="committee-description">Leads the club committee, strategic direction and overall club representation.</p>
+        </article>
+
+        <article class="committee-card">
+          <div class="role-icon">
+            <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+          </div>
+          <h3 class="committee-role">Vice President</h3>
+          <p class="committee-name">Name Here</p>
+          <p class="committee-description">Supports the president and helps coordinate club operations and member engagement.</p>
+        </article>
+
+        <article class="committee-card">
+          <div class="role-icon">
+            <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+          </div>
+          <h3 class="committee-role">Secretary</h3>
+          <p class="committee-name">Name Here</p>
+          <p class="committee-description">Manages committee records, meeting notes, correspondence and club administration.</p>
+        </article>
+
+        <article class="committee-card">
+          <div class="role-icon">
+            <i class="fa-solid fa-coins" aria-hidden="true"></i>
+          </div>
+          <h3 class="committee-role">Treasurer</h3>
+          <p class="committee-name">Name Here</p>
+          <p class="committee-description">Oversees club finances, budgeting, payments, fundraising and financial reporting.</p>
+        </article>
+
+        <article class="committee-card">
+          <div class="role-icon">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          </div>
+          <h3 class="committee-role">Club Captain</h3>
+          <p class="committee-name">Name Here</p>
+          <p class="committee-description">Represents players, promotes club culture and supports on-field leadership.</p>
+        </article>
+
+        <article class="committee-card">
+          <div class="role-icon">
+            <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+          </div>
+          <h3 class="committee-role">Social & Events</h3>
+          <p class="committee-name">Name Here</p>
+          <p class="committee-description">Coordinates social events, tournament activities, fundraisers and club celebrations.</p>
+        </article>
+
+        <article class="committee-card">
+          <div class="role-icon">
+            <i class="fa-solid fa-building" aria-hidden="true"></i>
+          </div>
+          <h3 class="committee-role">Sponsorship & Partnerships</h3>
+          <p class="committee-name">Name Here</p>
+          <p class="committee-description">Builds relationships with sponsors, local businesses and community partners.</p>
+        </article>
+
+        <article class="committee-card">
+          <div class="role-icon">
+            <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+          </div>
+          <h3 class="committee-role">Junior Development</h3>
+          <p class="committee-name">Name Here</p>
+          <p class="committee-description">Supports future junior pathways, family engagement and youth rugby development.</p>
+        </article>
       </div>
 
-      <div class="committee-row">
-        <div class="committee-name">Name Here</div>
-        <div class="committee-role">Vice President</div>
-      </div>
+      <div class="general-member-list">
+        <article class="general-member">
+          <h3>General Committee Member</h3>
+          <p>Name Here</p>
+        </article>
 
-      <div class="committee-row">
-        <div class="committee-name">Name Here</div>
-        <div class="committee-role">Secretary</div>
+        <article class="general-member">
+          <h3>General Committee Member</h3>
+          <p>Name Here</p>
+        </article>
       </div>
+    </section>
 
-      <div class="committee-row">
-        <div class="committee-name">Name Here</div>
-        <div class="committee-role">Treasurer</div>
-      </div>
+    <section class="cta-section">
+      <div class="page-section cta-content">
+        <div>
+          <h2>Want to help build the club?</h2>
+          <p>
+            You do not need to play rugby to make a difference. Bogong welcomes volunteers, event helpers, coaches, sponsors and community supporters.
+          </p>
+        </div>
 
-      <div class="committee-row">
-        <div class="committee-name">Name Here</div>
-        <div class="committee-role">Club Captain</div>
-      </div>
-
-      <div class="committee-row">
-        <div class="committee-name">Name Here</div>
-        <div class="committee-role">Social & Events Coordinator</div>
-      </div>
-
-      <div class="committee-row">
-        <div class="committee-name">Name Here</div>
-        <div class="committee-role">Sponsorship & Partnerships</div>
-      </div>
-
-      <div class="committee-row">
-        <div class="committee-name">Name Here</div>
-        <div class="committee-role">Junior Development</div>
-      </div>
-
-      <div class="committee-row">
-        <div class="committee-name">Name Here</div>
-        <div class="committee-role">General Committee Member</div>
+        <a class="button" href="Contact.html">Get in touch</a>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Bogong Rugby Club. All rights reserved.</p>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <h2>Bogong Rugby Club</h2>
+        <p>Community rugby in the high country.</p>
+        <p>Stronger together. Bogong forever.</p>
+      </div>
+
+      <div>
+        <h2>Club links</h2>
+        <div class="footer-links">
+          <a href="Fixtures.html">Fixtures</a>
+          <a href="Teams.html">Teams</a>
+          <a href="Join.html">Join</a>
+          <a href="Contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h2>Follow us</h2>
+
+        <!-- Replace # with official club social-media URLs. -->
+        <div class="footer-links">
+          <a href="#" aria-label="Bogong Rugby Club on Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            Instagram
+          </a>
+
+          <a href="#" aria-label="Bogong Rugby Club on Facebook">
+            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <p class="copyright">
+      © <span id="year"></span> Bogong Rugby Club. All rights reserved.
+    </p>
   </footer>
 
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNavigation = document.querySelector(".header-nav");
+    const dropdowns = document.querySelectorAll(".has-dropdown");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNavigation.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
+        : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    });
+
+    dropdowns.forEach((dropdown) => {
+      const toggle = dropdown.querySelector(".dropdown-toggle");
+      const menu = dropdown.querySelector(".dropdown-menu");
+
+      toggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        const willOpen = !dropdown.classList.contains("open");
+
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+
+        if (willOpen) {
+          dropdown.classList.add("open");
+          toggle.setAttribute("aria-expanded", "true");
+          menu.hidden = false;
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".has-dropdown")) {
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+      }
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
