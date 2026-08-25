@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Bogong Rugby Club — community rugby in the high country. Join, train, follow fixtures and support local rugby.">
+  <meta name="description" content="Learn about Bogong Rugby Club, its story, values and commitment to community rugby in the high country.">
   <meta name="theme-color" content="#164403">
-  <title>Bogong Rugby Club | Community Rugby in the High Country</title>
+  <title>About Us | Bogong Rugby Club</title>
 
-  <!-- Icons and fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -181,6 +180,11 @@
       transform: translateY(-1px);
     }
 
+    .dropdown-toggle.active {
+      background: var(--green);
+      color: #fff;
+    }
+
     .dropdown-toggle .fa-chevron-down {
       font-size: 0.75rem;
       transition: transform 0.2s ease;
@@ -225,53 +229,19 @@
       outline: none;
     }
 
-    /* Slideshow */
+    /* Hero */
 
-    .hero {
-      position: relative;
-      height: clamp(400px, 62vh, 680px);
-      overflow: hidden;
-      background: #081005;
-    }
-
-    .slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 650ms ease;
-    }
-
-    .slide.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.24));
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      width: min(1120px, calc(100% - 32px));
-      height: 100%;
-      margin: 0 auto;
+    .page-hero {
+      padding: 78px 16px 88px;
+      background:
+        linear-gradient(90deg, rgba(13, 44, 2, 0.9), rgba(13, 44, 2, 0.52)),
+        url("first-meeting.jpg") center / cover no-repeat;
       color: #fff;
+    }
+
+    .page-hero-content {
+      width: min(1120px, 100%);
+      margin: 0 auto;
     }
 
     .eyebrow {
@@ -283,155 +253,53 @@
       text-transform: uppercase;
     }
 
-    .hero-content h1 {
-      max-width: 720px;
+    .page-hero h1 {
+      max-width: 750px;
       margin: 0 0 12px;
       font-family: "Montserrat", Arial, sans-serif;
-      font-size: clamp(2.1rem, 5vw, 4.1rem);
-      line-height: 1.05;
-      letter-spacing: 1px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.08;
       text-transform: uppercase;
     }
 
-    .hero-content p:not(.eyebrow) {
-      max-width: 620px;
-      margin: 0 0 24px;
-      font-size: clamp(1rem, 2vw, 1.18rem);
+    .page-hero p:not(.eyebrow) {
+      max-width: 720px;
+      margin: 0;
+      font-size: 1.08rem;
     }
 
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      border: 2px solid transparent;
-      border-radius: 999px;
-      padding: 10px 20px;
-      background: var(--gold);
-      color: #1b1b1b;
-      font-size: 0.9rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .button:hover,
-    .button:focus-visible {
-      background: var(--gold-hover);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
-      outline: none;
-      transform: translateY(-2px);
-    }
-
-    .button-secondary {
-      border-color: #fff;
-      background: transparent;
-      color: #fff;
-    }
-
-    .button-secondary:hover,
-    .button-secondary:focus-visible {
-      background: #fff;
-      color: var(--green-dark);
-    }
-
-    .slide-control {
-      position: absolute;
-      top: 50%;
-      z-index: 4;
-      display: grid;
-      width: 46px;
-      height: 52px;
-      place-items: center;
-      border: 0;
-      background: rgba(0, 0, 0, 0.43);
-      color: #fff;
-      cursor: pointer;
-      font-size: 1.25rem;
-      transform: translateY(-50%);
-    }
-
-    .slide-control:hover,
-    .slide-control:focus-visible {
-      background: rgba(0, 0, 0, 0.76);
-      outline: 2px solid var(--gold);
-    }
-
-    .slide-prev {
-      left: 0;
-      border-radius: 0 8px 8px 0;
-    }
-
-    .slide-next {
-      right: 0;
-      border-radius: 8px 0 0 8px;
-    }
-
-    .slide-status {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      z-index: 4;
-      border-radius: 999px;
-      padding: 5px 10px;
-      background: rgba(0, 0, 0, 0.55);
-      color: #fff;
-      font-size: 0.8rem;
-    }
-
-    /* Thumbnail strip */
-
-    .thumbnail-strip {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      width: min(1000px, calc(100% - 32px));
-      margin: 14px auto 0;
-    }
-
-    .thumbnail-button {
-      overflow: hidden;
-      border: 2px solid transparent;
-      border-radius: 8px;
-      padding: 0;
-      background: transparent;
-      cursor: pointer;
-      opacity: 0.65;
-      transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .thumbnail-button:hover,
-    .thumbnail-button:focus-visible,
-    .thumbnail-button.active {
-      border-color: var(--gold);
-      opacity: 1;
-      outline: none;
-      transform: translateY(-2px);
-    }
-
-    .thumbnail-button img {
-      width: 100%;
-      height: 95px;
-      object-fit: cover;
-    }
-
-    /* General sections */
+    /* General content */
 
     .page-section {
-      width: min(1100px, calc(100% - 32px));
+      width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
       padding: 64px 0;
     }
 
+    .intro-panel {
+      margin-top: -40px;
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 34px);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .intro-panel h2 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    .intro-panel p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
     .section-heading {
-      max-width: 750px;
+      max-width: 760px;
       margin: 0 auto 30px;
       text-align: center;
     }
@@ -452,85 +320,88 @@
       color: var(--muted);
     }
 
-    /* Next match */
+    /* Story */
 
-    .next-match {
-      position: relative;
-      z-index: 5;
-      width: min(900px, calc(100% - 32px));
-      margin: 34px auto 0;
-      padding: 28px;
-      border-radius: var(--radius);
-      background: var(--surface);
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .next-match .eyebrow {
-      color: var(--red);
-    }
-
-    .next-match h2 {
-      margin: 0 0 6px;
-      color: var(--green);
-      font-family: "Montserrat", Arial, sans-serif;
-      font-size: clamp(1.35rem, 3vw, 2rem);
-    }
-
-    .next-match p:not(.eyebrow) {
-      margin: 0 0 18px;
-      color: var(--muted);
-    }
-
-    .match-details-button {
-      border-color: var(--green);
-      color: var(--green);
-    }
-
-    /* About content */
-
-    .about-layout {
+    .story-layout {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: clamp(28px, 5vw, 70px);
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(28px, 5vw, 68px);
       align-items: center;
     }
 
-    .about-layout h2 {
+    .story-layout h2 {
       margin: 0 0 16px;
       color: var(--green);
       font-family: "Montserrat", Arial, sans-serif;
       font-size: clamp(1.7rem, 3vw, 2.45rem);
     }
 
-    .about-layout .lead {
+    .story-layout .lead {
       margin: 0 0 16px;
       color: var(--red);
       font-size: 1.08rem;
       font-weight: 800;
     }
 
-    .about-layout p {
+    .story-layout p {
       margin: 0 0 14px;
     }
 
-    .about-image {
-      min-height: 320px;
+    .story-image {
+      min-height: 360px;
       overflow: hidden;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
 
-    .about-image img {
+    .story-image img {
       width: 100%;
       height: 100%;
-      min-height: 320px;
+      min-height: 360px;
       object-fit: cover;
     }
 
-    /* Club values */
+    /* Timeline */
 
-    .values {
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 22px;
+      align-items: start;
+      border-left: 4px solid var(--gold);
+      padding: 4px 0 4px 20px;
+    }
+
+    .timeline-date {
+      color: var(--red);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .timeline-content h3 {
+      margin: 0 0 5px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.12rem;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* Values */
+
+    .values-section {
       background: #eaf4e5;
     }
 
@@ -540,53 +411,124 @@
       gap: 18px;
     }
 
-    .value {
+    .value-card {
       border-left: 5px solid var(--gold);
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.72);
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.78);
     }
 
-    .value h3 {
-      margin: 0 0 6px;
+    .value-card i {
+      color: var(--red);
+      font-size: 1.55rem;
+    }
+
+    .value-card h3 {
+      margin: 12px 0 7px;
       color: var(--green);
       font-family: "Montserrat", Arial, sans-serif;
-      font-size: 1.08rem;
+      font-size: 1.14rem;
     }
 
-    .value p {
+    .value-card p {
       margin: 0;
       color: var(--muted);
     }
 
-    /* Contact area */
+    /* Community cards */
 
-    .contact-band {
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .community-card {
+      min-height: 230px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      background: var(--surface);
+      box-shadow: 0 3px 12px rgba(13, 44, 2, 0.07);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .community-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-5px);
+    }
+
+    .community-card i {
+      color: var(--red);
+      font-size: 1.8rem;
+    }
+
+    .community-card h3 {
+      margin: 14px 0 8px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.18rem;
+    }
+
+    .community-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* CTA */
+
+    .cta-section {
       background: var(--green);
       color: #fff;
     }
 
-    .contact-content {
+    .cta-content {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
     }
 
-    .contact-content h2 {
+    .cta-content h2 {
       margin: 0 0 6px;
       font-family: "Montserrat", Arial, sans-serif;
       font-size: clamp(1.5rem, 3vw, 2rem);
     }
 
-    .contact-content p {
+    .cta-content p {
       margin: 0;
       color: #e7f3df;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      padding: 10px 20px;
+      background: var(--gold);
+      color: #1b1b1b;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: var(--gold-hover);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+      outline: none;
+      transform: translateY(-2px);
     }
 
     /* Footer */
 
     .site-footer {
-      padding: 44px 16px 20px;
+      padding: 40px 16px 18px;
       background: var(--green-dark);
       color: #fff;
     }
@@ -595,7 +537,7 @@
       display: grid;
       grid-template-columns: 1.3fr 1fr 1fr;
       gap: 30px;
-      width: min(1100px, 100%);
+      width: min(1120px, 100%);
       margin: 0 auto;
     }
 
@@ -628,15 +570,13 @@
     }
 
     .copyright {
-      width: min(1100px, 100%);
-      margin: 30px auto 0;
+      width: min(1120px, 100%);
+      margin: 28px auto 0;
       padding-top: 16px;
       border-top: 1px solid rgba(255, 255, 255, 0.2);
       color: #c5d9bd;
       font-size: 0.86rem;
     }
-
-    /* Responsive styling */
 
     @media (max-width: 900px) {
       .main-header {
@@ -681,21 +621,19 @@
         box-shadow: none;
       }
 
-      .about-layout {
+      .story-layout,
+      .value-grid,
+      .community-grid {
         grid-template-columns: 1fr;
       }
 
-      .about-image {
+      .story-image {
         order: -1;
-        min-height: 250px;
+        min-height: 260px;
       }
 
-      .about-image img {
-        min-height: 250px;
-      }
-
-      .value-grid {
-        grid-template-columns: 1fr;
+      .story-image img {
+        min-height: 260px;
       }
 
       .footer-content {
@@ -719,54 +657,20 @@
         font-size: 1rem;
       }
 
-      .hero {
-        height: 500px;
-      }
-
-      .hero-overlay {
-        background: rgba(0, 0, 0, 0.56);
-      }
-
-      .hero-content {
-        width: min(100% - 48px, 1100px);
-      }
-
-      .slide-control {
-        top: auto;
-        bottom: 16px;
-        width: 42px;
-        height: 42px;
-        transform: none;
-      }
-
-      .slide-prev {
-        left: 16px;
-        border-radius: 8px;
-      }
-
-      .slide-next {
-        right: 16px;
-        border-radius: 8px;
-      }
-
-      .slide-status {
-        right: 68px;
-        bottom: 27px;
-      }
-
-      .thumbnail-strip {
-        gap: 5px;
-      }
-
-      .thumbnail-button img {
-        height: 64px;
+      .page-hero {
+        padding: 60px 16px 74px;
       }
 
       .page-section {
         padding: 48px 0;
       }
 
-      .contact-content {
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .cta-content {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -825,10 +729,10 @@
 
           <ul class="dropdown-menu" id="teams-menu" hidden>
             <li><a href="Teams.html">All teams</a></li>
-            <li><a href="mens-xv.html">Men's XV</a></li>
-            <li><a href="womens-xv.html">Women's XV</a></li>
-            <li><a href="sevens.html">Sevens squad</a></li>
-            <li><a href="juniors.html">Juniors</a></li>
+            <li><a href="Teams.html#mens">Men's XV</a></li>
+            <li><a href="Teams.html#womens">Women's Rugby</a></li>
+            <li><a href="Teams.html#sevens">Sevens squad</a></li>
+            <li><a href="Teams.html#juniors">Juniors</a></li>
           </ul>
         </li>
 
@@ -839,7 +743,7 @@
           </button>
 
           <ul class="dropdown-menu" id="fixtures-menu" hidden>
-            <li><a href="fixtures.html">Upcoming matches</a></li>
+            <li><a href="Fixtures.html">Upcoming matches</a></li>
             <li><a href="results.html">Results</a></li>
             <li><a href="tournaments.html">Tournaments</a></li>
             <li><a href="training.html">Training schedule</a></li>
@@ -847,13 +751,13 @@
         </li>
 
         <li class="nav-item has-dropdown">
-          <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="club-menu">
+          <button class="dropdown-toggle active" type="button" aria-expanded="false" aria-controls="club-menu">
             Club
             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
           </button>
 
           <ul class="dropdown-menu" id="club-menu" hidden>
-            <li><a href="About.html">About us</a></li>
+            <li><a href="About.html" aria-current="page">About us</a></li>
             <li><a href="committee.html">Committee</a></li>
             <li><a href="policies.html">Policies</a></li>
             <li><a href="sponsors.html">Sponsors</a></li>
@@ -861,16 +765,23 @@
         </li>
 
         <li class="nav-item">
-          <a href="shop.html" class="nav-link">
+          <a href="Shop.html" class="nav-link">
             <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
             Shop
           </a>
         </li>
 
         <li class="nav-item">
-          <a href="contact.html" class="nav-link">
+          <a href="Contact.html" class="nav-link">
             <i class="fa-solid fa-envelope" aria-hidden="true"></i>
             Contact
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="Join.html" class="nav-link">
+            <i class="fa-solid fa-person-running" aria-hidden="true"></i>
+            Join
           </a>
         </li>
       </ul>
@@ -878,151 +789,160 @@
   </header>
 
   <main id="main-content">
-    <section class="hero" aria-label="Bogong Rugby Club highlights">
-      <div class="slide active">
-        <img src="swanhill.jpg" alt="Bogong Rugby Club at the Swan Hill tournament">
-      </div>
-
-      <div class="slide">
-        <img src="swanhill-2.jpg" alt="Bogong players gathering in a team huddle at Swan Hill">
-      </div>
-
-      <div class="slide">
-        <img src="line-out pic.jpg" alt="Bogong Rugby Club competing in a lineout">
-      </div>
-
-      <div class="slide">
-        <img src="footscray.jpg" alt="Bogong Rugby Club playing a match against Footscray">
-      </div>
-
-      <div class="slide">
-        <img src="first-meeting.jpg" alt="Members attending the first Bogong Rugby Club meeting">
-      </div>
-
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-        <p class="eyebrow">High country rugby</p>
-        <h1>Stronger together.<br>Bogong forever.</h1>
-        <p>Building community, culture and rugby in the high country — on and off the field.</p>
-
-        <div class="button-row">
-          <a class="button" href="Join.html">Join the Bogong family</a>
-          <a class="button button-secondary" href="fixtures.html">View fixtures</a>
-        </div>
-      </div>
-
-      <button class="slide-control slide-prev" type="button" aria-label="Show previous photo">
-        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-      </button>
-
-      <button class="slide-control slide-next" type="button" aria-label="Show next photo">
-        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-      </button>
-
-      <div class="slide-status" aria-live="polite">
-        <span id="current-slide">1</span> / <span id="total-slides">5</span>
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <p class="eyebrow">Our club</p>
+        <h1>About Bogong Rugby Club</h1>
+        <p>
+          We are building a proud, inclusive rugby community in the high country — bringing people together through competition, culture and connection.
+        </p>
       </div>
     </section>
 
-    <section class="thumbnail-strip" aria-label="Choose a slideshow photo">
-      <button class="thumbnail-button active" type="button" aria-label="Show Swan Hill tournament photo" data-slide="0">
-        <img src="swanhill.jpg" alt="">
-      </button>
+    <div class="page-section" style="padding-bottom: 0;">
+      <section class="intro-panel" aria-labelledby="intro-title">
+        <h2 id="intro-title">Stronger together. Bogong forever.</h2>
+        <p>
+          Bogong Rugby Club is more than a team. It is a place for players, families, volunteers, supporters and local partners to belong, contribute and grow together.
+        </p>
+      </section>
+    </div>
 
-      <button class="thumbnail-button" type="button" aria-label="Show Swan Hill team huddle photo" data-slide="1">
-        <img src="swanhill-2.jpg" alt="">
-      </button>
-
-      <button class="thumbnail-button" type="button" aria-label="Show lineout action photo" data-slide="2">
-        <img src="line-out pic.jpg" alt="">
-      </button>
-
-      <button class="thumbnail-button" type="button" aria-label="Show Footscray match photo" data-slide="3">
-        <img src="footscray.jpg" alt="">
-      </button>
-
-      <button class="thumbnail-button" type="button" aria-label="Show first club meeting photo" data-slide="4">
-        <img src="first-meeting.jpg" alt="">
-      </button>
-    </section>
-
-    <!-- Replace bracketed details below with real club fixture information. -->
-    <section class="next-match" aria-labelledby="next-match-title">
-      <p class="eyebrow">Next match</p>
-      <h2 id="next-match-title">Bogong RUFC vs [Opponent]</h2>
-      <p>Saturday [Date] · [Kick-off time] · [Ground / venue]</p>
-
-      <div class="button-row" style="justify-content: center;">
-        <a class="button" href="fixtures.html">Full fixtures</a>
-        <a class="button button-secondary match-details-button" href="contact.html">Match details</a>
-      </div>
-    </section>
-
-    <section class="page-section about-layout" aria-labelledby="about-title">
+    <section class="page-section story-layout" aria-labelledby="story-title">
       <div>
         <p class="eyebrow" style="color: var(--red);">Our story</p>
-        <h2 id="about-title">More than a team</h2>
+        <h2 id="story-title">Rugby with purpose</h2>
 
         <p class="lead">
-          Bogong Rugby Club was founded with one purpose: to bring our community together through the power, passion and spirit of rugby.
+          Bogong Rugby Club was founded with a simple purpose: to bring our community together through the power, passion and spirit of rugby.
         </p>
 
         <p>
-          What began as a small group of dedicated players has grown into a proud and determined team representing the Bogong region with heart, discipline and unity.
+          What began as a small group of dedicated people has grown into a proud and determined club representing the Bogong region with heart, discipline and unity.
         </p>
 
         <p>
-          We embrace a culture built on respect, hard work and community. Whether on the training paddock or on tournament day, our players push each other to become better athletes, teammates and leaders.
+          We believe rugby creates more than athletes. It builds confidence, leadership, friendships and a stronger connection to community. On the training paddock and during tournament weekends, members support each other to improve both on and off the field.
         </p>
 
         <p>
-          In our first year, we hosted our inaugural tournament in Tallangatta — an important milestone in the club's emerging journey. We are building a legacy that future generations can be proud of.
+          Our inaugural tournament in Tallangatta was an important early milestone. It showed what can happen when players, volunteers, supporters and local communities come together around a shared vision.
         </p>
-
-        <a class="button" href="About.html">Learn about Bogong</a>
       </div>
 
-      <div class="about-image">
-        <img src="first-meeting.jpg" alt="Members of Bogong Rugby Club at the first club meeting" loading="lazy">
+      <div class="story-image">
+        <img src="first-meeting.jpg" alt="Bogong Rugby Club members at an early club meeting" loading="lazy">
       </div>
     </section>
 
-    <section class="values">
+    <section class="page-section" aria-labelledby="journey-title">
+      <div class="section-heading">
+        <p class="eyebrow">Our journey</p>
+        <h2 id="journey-title">Building Bogong</h2>
+        <p>Update the timeline below with confirmed club dates and milestones as the club continues to grow.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-date">The beginning</div>
+          <div class="timeline-content">
+            <h3>A shared idea becomes a club</h3>
+            <p>Dedicated community members came together with a vision to create a rugby home for the Bogong region.</p>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-date">Year one</div>
+          <div class="timeline-content">
+            <h3>First players and supporters</h3>
+            <p>The club began building its player group, volunteer network and local support base.</p>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-date">Tallangatta</div>
+          <div class="timeline-content">
+            <h3>Inaugural tournament</h3>
+            <p>Bogong Rugby Club hosted its inaugural tournament in Tallangatta, marking a major milestone in the club's early journey.</p>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-date">The future</div>
+          <div class="timeline-content">
+            <h3>Growing pathways and community</h3>
+            <p>The club is working toward more teams, more opportunities to play and stronger links with the wider high-country community.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="values-section">
       <div class="page-section" aria-labelledby="values-title">
         <div class="section-heading">
           <p class="eyebrow">What we stand for</p>
-          <h2 id="values-title">Our club values</h2>
-          <p>We are building a rugby club that strengthens people and community.</p>
+          <h2 id="values-title">Our values</h2>
+          <p>These values guide the way we play, lead, welcome people and represent Bogong Rugby Club.</p>
         </div>
 
         <div class="value-grid">
-          <article class="value">
+          <article class="value-card">
+            <i class="fa-solid fa-people-group" aria-hidden="true"></i>
             <h3>Community</h3>
-            <p>We create a welcoming place for players, families, supporters and local partners.</p>
+            <p>We bring people together and create a welcoming home for players, families, supporters and local partners.</p>
           </article>
 
-          <article class="value">
+          <article class="value-card">
+            <i class="fa-solid fa-handshake" aria-hidden="true"></i>
             <h3>Respect</h3>
-            <p>We respect teammates, opponents, officials and the game we represent.</p>
+            <p>We respect teammates, opponents, officials, volunteers and the game we are proud to represent.</p>
           </article>
 
-          <article class="value">
+          <article class="value-card">
+            <i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i>
             <h3>Development</h3>
-            <p>We help people grow in confidence, skill, leadership and connection to community.</p>
+            <p>We help people grow in confidence, skill, leadership and connection to the club and community.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="contact-band">
-      <div class="page-section contact-content">
+    <section class="page-section" aria-labelledby="community-title">
+      <div class="section-heading">
+        <p class="eyebrow">Beyond match day</p>
+        <h2 id="community-title">A club for the community</h2>
+        <p>There are many ways to be part of Bogong Rugby Club, whether you play rugby or not.</p>
+      </div>
+
+      <div class="community-grid">
+        <article class="community-card">
+          <i class="fa-solid fa-person-running" aria-hidden="true"></i>
+          <h3>Play</h3>
+          <p>Join a team, build your skills and represent the Bogong region with pride.</p>
+        </article>
+
+        <article class="community-card">
+          <i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>
+          <h3>Volunteer</h3>
+          <p>Support events, administration, coaching, match days, transport or club fundraising.</p>
+        </article>
+
+        <article class="community-card">
+          <i class="fa-solid fa-building" aria-hidden="true"></i>
+          <h3>Partner</h3>
+          <p>Help grow local rugby through sponsorship, partnerships, services or community support.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="page-section cta-content">
         <div>
-          <h2>Ready to get involved?</h2>
-          <p>Contact Bogong Rugby Club for playing, training, volunteering or sponsorship enquiries.</p>
+          <h2>Be part of the Bogong story</h2>
+          <p>Join the club, volunteer your time, support an event or contact us to learn more.</p>
         </div>
 
-        <a class="button" href="contact.html">Contact the club</a>
+        <a class="button" href="Join.html">Join Bogong Rugby Club</a>
       </div>
     </section>
   </main>
@@ -1038,10 +958,10 @@
       <div>
         <h2>Club links</h2>
         <div class="footer-links">
-          <a href="fixtures.html">Fixtures</a>
+          <a href="Fixtures.html">Fixtures</a>
+          <a href="Teams.html">Teams</a>
           <a href="Join.html">Join</a>
-          <a href="training.html">Training</a>
-          <a href="contact.html">Contact</a>
+          <a href="Contact.html">Contact</a>
         </div>
       </div>
 
@@ -1069,8 +989,6 @@
   </footer>
 
   <script>
-    /* Mobile navigation */
-
     const menuToggle = document.querySelector(".menu-toggle");
     const mainNavigation = document.querySelector(".header-nav");
     const dropdowns = document.querySelectorAll(".has-dropdown");
@@ -1131,79 +1049,6 @@
         });
       }
     });
-
-    /* Slideshow */
-
-    const slides = Array.from(document.querySelectorAll(".slide"));
-    const thumbnailButtons = Array.from(document.querySelectorAll(".thumbnail-button"));
-    const previousButton = document.querySelector(".slide-prev");
-    const nextButton = document.querySelector(".slide-next");
-    const hero = document.querySelector(".hero");
-    const currentSlideDisplay = document.getElementById("current-slide");
-    const totalSlidesDisplay = document.getElementById("total-slides");
-
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    let slideIndex = 0;
-    let autoSlideInterval;
-
-    totalSlidesDisplay.textContent = slides.length;
-
-    function showSlide(index) {
-      slideIndex = (index + slides.length) % slides.length;
-
-      slides.forEach((slide, position) => {
-        slide.classList.toggle("active", position === slideIndex);
-      });
-
-      thumbnailButtons.forEach((button, position) => {
-        button.classList.toggle("active", position === slideIndex);
-      });
-
-      currentSlideDisplay.textContent = slideIndex + 1;
-    }
-
-    function startAutoSlide() {
-      if (reduceMotion || slides.length < 2) return;
-
-      clearInterval(autoSlideInterval);
-
-      autoSlideInterval = setInterval(() => {
-        showSlide(slideIndex + 1);
-      }, 6000);
-    }
-
-    function stopAutoSlide() {
-      clearInterval(autoSlideInterval);
-    }
-
-    previousButton.addEventListener("click", () => {
-      showSlide(slideIndex - 1);
-      startAutoSlide();
-    });
-
-    nextButton.addEventListener("click", () => {
-      showSlide(slideIndex + 1);
-      startAutoSlide();
-    });
-
-    thumbnailButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        showSlide(Number(button.dataset.slide));
-        startAutoSlide();
-      });
-    });
-
-    hero.addEventListener("mouseenter", stopAutoSlide);
-    hero.addEventListener("mouseleave", startAutoSlide);
-    hero.addEventListener("focusin", stopAutoSlide);
-    hero.addEventListener("focusout", startAutoSlide);
-
-    startAutoSlide();
-
-    /* Current year */
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
