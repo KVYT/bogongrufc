@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Bogong Rugby Club — community rugby in the high country. Find fixtures, training, news and ways to join.">
+  <meta name="description" content="Bogong Rugby Club — community rugby in the high country. Find fixtures, training details and ways to join.">
   <meta name="theme-color" content="#164403">
   <title>Bogong Rugby Club | Community Rugby in the High Country</title>
 
@@ -16,7 +16,7 @@
     :root {
       --green: #164403;
       --green-dark: #0d2c02;
-      --green-light: #b5e48c;
+      --green-light: #a4df7b;
       --red: #500402;
       --gold: #ffcc00;
       --gold-hover: #ffe066;
@@ -30,6 +30,7 @@
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -41,12 +42,14 @@
     }
 
     img { display: block; max-width: 100%; }
+
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
+
+    button, input { font: inherit; }
 
     .skip-link {
       position: absolute;
-      top: -60px;
+      top: -50px;
       left: 12px;
       z-index: 2000;
       padding: 10px 14px;
@@ -58,16 +61,15 @@
 
     .skip-link:focus { top: 12px; }
 
-    /* Header */
     .main-header {
       position: sticky;
       top: 0;
       z-index: 1000;
+      min-height: 86px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      min-height: 82px;
       padding: 8px clamp(16px, 4vw, 46px);
       background: linear-gradient(90deg, #b5e48c 0%, #f3f5f4 78%);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
@@ -81,18 +83,19 @@
     }
 
     .brand img {
-      width: 64px;
-      height: 64px;
+      width: 66px;
+      height: 66px;
       flex: 0 0 auto;
       object-fit: contain;
     }
 
     .brand-name {
+      margin: 0;
       color: var(--green);
       font-family: "Montserrat", Arial, sans-serif;
-      font-size: clamp(1.05rem, 2vw, 1.5rem);
+      font-size: clamp(1.05rem, 2vw, 1.55rem);
       font-weight: 800;
-      letter-spacing: 1.3px;
+      letter-spacing: 1.4px;
       line-height: 1.2;
       text-transform: uppercase;
     }
@@ -110,11 +113,9 @@
       cursor: pointer;
     }
 
-    .menu-toggle:hover,
-    .menu-toggle:focus-visible {
+    .menu-toggle:hover, .menu-toggle:focus-visible {
       background: var(--green);
       color: #fff;
-      outline: none;
     }
 
     .header-nav { display: flex; align-items: center; }
@@ -130,8 +131,7 @@
 
     .nav-item { position: relative; }
 
-    .nav-link,
-    .dropdown-toggle {
+    .nav-link, .dropdown-toggle {
       display: inline-flex;
       align-items: center;
       gap: 7px;
@@ -146,10 +146,8 @@
       transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
     }
 
-    .nav-link:hover,
-    .nav-link:focus-visible,
-    .dropdown-toggle:hover,
-    .dropdown-toggle:focus-visible,
+    .nav-link:hover, .nav-link:focus-visible,
+    .dropdown-toggle:hover, .dropdown-toggle:focus-visible,
     .nav-item.open .dropdown-toggle {
       background: var(--red);
       color: #fff;
@@ -157,11 +155,7 @@
       transform: translateY(-1px);
     }
 
-    .dropdown-toggle .fa-chevron-down {
-      font-size: 0.75rem;
-      transition: transform 0.2s ease;
-    }
-
+    .dropdown-toggle .fa-chevron-down { font-size: 0.75rem; transition: transform 0.2s ease; }
     .nav-item.open .dropdown-toggle .fa-chevron-down { transform: rotate(180deg); }
 
     .dropdown-menu {
@@ -190,14 +184,12 @@
       font-weight: 600;
     }
 
-    .dropdown-menu a:hover,
-    .dropdown-menu a:focus-visible {
+    .dropdown-menu a:hover, .dropdown-menu a:focus-visible {
       background: #edf6e8;
       color: var(--green-dark);
       outline: none;
     }
 
-    /* Hero slideshow */
     .hero {
       position: relative;
       height: clamp(390px, 58vh, 650px);
@@ -228,7 +220,7 @@
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.24));
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.23));
       pointer-events: none;
     }
 
@@ -236,12 +228,12 @@
       position: relative;
       z-index: 3;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
       width: min(1120px, calc(100% - 32px));
       height: 100%;
       margin: 0 auto;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
       color: #fff;
     }
 
@@ -270,11 +262,7 @@
       font-size: clamp(1rem, 2vw, 1.18rem);
     }
 
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
     .button {
       display: inline-flex;
@@ -293,8 +281,7 @@
       transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .button:hover,
-    .button:focus-visible {
+    .button:hover, .button:focus-visible {
       background: var(--gold-hover);
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
       outline: none;
@@ -307,11 +294,7 @@
       color: #fff;
     }
 
-    .button-secondary:hover,
-    .button-secondary:focus-visible {
-      background: #fff;
-      color: var(--green-dark);
-    }
+    .button-secondary:hover, .button-secondary:focus-visible { background: #fff; color: var(--green-dark); }
 
     .slide-control {
       position: absolute;
@@ -329,12 +312,7 @@
       transform: translateY(-50%);
     }
 
-    .slide-control:hover,
-    .slide-control:focus-visible {
-      background: rgba(0, 0, 0, 0.76);
-      outline: 2px solid var(--gold);
-    }
-
+    .slide-control:hover, .slide-control:focus-visible { background: rgba(0, 0, 0, 0.76); outline: 2px solid var(--gold); }
     .slide-prev { left: 0; border-radius: 0 8px 8px 0; }
     .slide-next { right: 0; border-radius: 8px 0 0 8px; }
 
@@ -350,30 +328,8 @@
       font-size: 0.8rem;
     }
 
-    /* Shared content */
-    .page-section {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 64px 0;
-    }
+    .page-section { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 64px 0; }
 
-    .section-heading {
-      max-width: 720px;
-      margin: 0 auto 30px;
-      text-align: center;
-    }
-
-    .section-heading h2 {
-      margin: 0 0 10px;
-      color: var(--green);
-      font-family: "Montserrat", Arial, sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.45rem);
-    }
-
-    .section-heading .eyebrow { color: var(--red); }
-    .section-heading p:not(.eyebrow) { margin: 0; color: var(--muted); }
-
-    /* Next match */
     .next-match {
       position: relative;
       z-index: 5;
@@ -387,23 +343,14 @@
     }
 
     .next-match .eyebrow { color: var(--red); }
-
-    .next-match h2 {
-      margin: 0 0 4px;
-      color: var(--green);
-      font-family: "Montserrat", Arial, sans-serif;
-      font-size: clamp(1.35rem, 3vw, 2rem);
-    }
-
+    .next-match h2 { margin: 0 0 4px; color: var(--green); font-family: "Montserrat", Arial, sans-serif; font-size: clamp(1.35rem, 3vw, 2rem); }
     .next-match p:not(.eyebrow) { margin: 0 0 18px; color: var(--muted); }
-    .match-details-button { border-color: var(--green); color: var(--green); }
 
-    /* Action cards */
-    .action-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+    .section-heading { max-width: 720px; margin: 0 auto 30px; text-align: center; }
+    .section-heading h2 { margin: 0 0 10px; color: var(--green); font-family: "Montserrat", Arial, sans-serif; font-size: clamp(1.7rem, 3vw, 2.45rem); }
+    .section-heading p { margin: 0; color: var(--muted); }
+
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
     .action-card {
       display: block;
@@ -416,12 +363,11 @@
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
 
-    .action-card:hover,
-    .action-card:focus-visible {
-      border-color: var(--green-light);
-      box-shadow: var(--shadow);
-      outline: none;
-      transform: translateY(-5px);
-    }
+    .action-card:hover, .action-card:focus-visible { border-color: var(--green-light); box-shadow: var(--shadow); outline: none; transform: translateY(-5px); }
+    .action-card i { color: var(--red); font-size: 2rem; }
+    .action-card h3 { margin: 15px 0 8px; color: var(--green); font-family: "Montserrat", Arial, sans-serif; font-size: 1.25rem; }
+    .action-card p { margin: 0; color: var(--muted); }
 
-    .action-card i { color: va
+    .about-section { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
+    .about-section h2 { margin: 0 0 16px; color: var(--green); font-family: "Montserrat", Arial, sans-serif; font-size: clamp(1.7rem, 3vw, 2.45rem); }
+    .about-section .
