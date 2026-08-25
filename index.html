@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Bogong Rugby Club — community rugby in the high country. Find fixtures, training, news, merchandise and ways to join.">
+  <meta name="description" content="Bogong Rugby Club — community rugby in the high country. Find news, teams, merchandise and ways to join.">
   <meta name="theme-color" content="#164403">
   <title>Bogong Rugby Club | Community Rugby in the High Country</title>
 
@@ -402,7 +402,7 @@
       font-size: 0.8rem;
     }
 
-    /* Slideshow thumbnail strip */
+    /* Slideshow thumbnails */
 
     .thumbnail-strip {
       display: grid;
@@ -438,7 +438,7 @@
       object-fit: cover;
     }
 
-    /* Common sections */
+    /* Shared sections */
 
     .page-section {
       width: min(1120px, calc(100% - 32px));
@@ -468,7 +468,7 @@
       color: var(--muted);
     }
 
-    /* Next Match */
+    /* Next match */
 
     .next-match {
       width: min(920px, calc(100% - 32px));
@@ -500,7 +500,7 @@
       justify-content: center;
     }
 
-    /* Get involved */
+    /* Get involved cards */
 
     .action-grid {
       display: grid;
@@ -1040,10 +1040,7 @@
           </button>
 
           <ul class="dropdown-menu" id="fixtures-menu" hidden>
-            <li><a href="fixtures.html">Upcoming matches</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="tournaments.html">Tournaments</a></li>
-            <li><a href="training.html">Training schedule</a></li>
+            <li><a href="contact.html">Fixtures and training information</a></li>
           </ul>
         </li>
 
@@ -1056,8 +1053,7 @@
           <ul class="dropdown-menu" id="club-menu" hidden>
             <li><a href="about.html">About us</a></li>
             <li><a href="committee.html">Committee</a></li>
-            <li><a href="Policies.html">Policies</a></li>
-            <li><a href="sponsors.html">Sponsors</a></li>
+            <li><a href="policies.html">Policies</a></li>
           </ul>
         </li>
 
@@ -1116,7 +1112,7 @@
 
         <div class="button-row">
           <a class="button" href="join.html">Join the Bogong family</a>
-          <a class="button button-secondary" href="Fixtures.html">View fixtures</a>
+          <a class="button button-secondary" href="contact.html">Fixtures and training</a>
         </div>
       </div>
 
@@ -1155,15 +1151,14 @@
       </button>
     </section>
 
-    <!-- Replace details below with your confirmed next match information. -->
     <section class="next-match" aria-labelledby="next-match-title">
-      <p class="eyebrow">Next match</p>
-      <h2 id="next-match-title">Bogong RUFC vs [Opponent]</h2>
-      <p>Saturday [Date] · [Kick-off time] · [Ground / venue]</p>
+      <p class="eyebrow">Get involved</p>
+      <h2 id="next-match-title">Want to play or support Bogong?</h2>
+      <p>Contact the club for the latest fixtures, training details and ways to get involved.</p>
 
       <div class="button-row next-match-actions">
-        <a class="button" href="fixtures.html">Full fixtures</a>
-        <a class="button button-green-outline" href="contact.html">Match details</a>
+        <a class="button" href="contact.html">Contact the club</a>
+        <a class="button button-green-outline" href="join.html">Join Bogong</a>
       </div>
     </section>
 
@@ -1175,16 +1170,16 @@
       </div>
 
       <div class="action-grid">
-        <a class="action-card" href="Join.html">
+        <a class="action-card" href="join.html">
           <i class="fa-solid fa-person-running" aria-hidden="true"></i>
           <h3>Play with us</h3>
           <p>New and experienced players are welcome. Find registration information and how to get started.</p>
         </a>
 
-        <a class="action-card" href="training.html">
-          <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
-          <h3>Training</h3>
-          <p>Find the latest training times, location and what to bring for your first session.</p>
+        <a class="action-card" href="teams.html">
+          <i class="fa-solid fa-users" aria-hidden="true"></i>
+          <h3>Our teams</h3>
+          <p>Explore current and future playing pathways at Bogong Rugby Club.</p>
         </a>
 
         <a class="action-card" href="contact.html">
@@ -1308,11 +1303,11 @@
       <div>
         <h2>Club links</h2>
         <div class="footer-links">
-          <a href="fixtures.html">Fixtures</a>
           <a href="teams.html">Teams</a>
           <a href="shop.html">Shop</a>
           <a href="join.html">Join</a>
           <a href="contact.html">Contact</a>
+          <a href="about.html">About</a>
           <a href="policies.html">Policies</a>
         </div>
       </div>
@@ -1409,10 +1404,7 @@
     const hero = document.querySelector(".hero");
     const currentSlideDisplay = document.getElementById("current-slide");
     const totalSlidesDisplay = document.getElementById("total-slides");
-
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     let slideIndex = 0;
     let autoSlideInterval;
