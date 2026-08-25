@@ -180,6 +180,11 @@
       transform: translateY(-1px);
     }
 
+    .nav-link.active {
+      background: var(--green);
+      color: #fff;
+    }
+
     .dropdown-toggle .fa-chevron-down {
       font-size: 0.75rem;
       transition: transform 0.2s ease;
@@ -224,7 +229,7 @@
       outline: none;
     }
 
-    /* Hero slideshow */
+    /* Hero */
 
     .hero {
       position: relative;
@@ -256,7 +261,7 @@
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.24));
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.22));
       pointer-events: none;
     }
 
@@ -341,6 +346,18 @@
       color: var(--green-dark);
     }
 
+    .button-green-outline {
+      border-color: var(--green);
+      background: transparent;
+      color: var(--green);
+    }
+
+    .button-green-outline:hover,
+    .button-green-outline:focus-visible {
+      background: var(--green);
+      color: #fff;
+    }
+
     .slide-control {
       position: absolute;
       top: 50%;
@@ -385,6 +402,42 @@
       font-size: 0.8rem;
     }
 
+    /* Slide thumbnails */
+
+    .thumbnail-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      width: min(1000px, calc(100% - 32px));
+      margin: 14px auto 0;
+    }
+
+    .thumbnail-button {
+      overflow: hidden;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      opacity: 0.65;
+      transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .thumbnail-button:hover,
+    .thumbnail-button:focus-visible,
+    .thumbnail-button.active {
+      border-color: var(--gold);
+      opacity: 1;
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .thumbnail-button img {
+      width: 100%;
+      height: 88px;
+      object-fit: cover;
+    }
+
     /* Shared sections */
 
     .page-section {
@@ -421,8 +474,8 @@
       position: relative;
       z-index: 5;
       width: min(920px, calc(100% - 32px));
-      margin: -42px auto 0;
-      padding: 24px clamp(20px, 4vw, 36px);
+      margin: 30px auto 0;
+      padding: 26px clamp(20px, 4vw, 36px);
       border-radius: var(--radius);
       background: var(--surface);
       box-shadow: var(--shadow);
@@ -445,9 +498,8 @@
       color: var(--muted);
     }
 
-    .match-details-button {
-      border-color: var(--green);
-      color: var(--green);
+    .next-match-actions {
+      justify-content: center;
     }
 
     /* Cards */
@@ -733,8 +785,6 @@
       font-size: 0.86rem;
     }
 
-    /* Responsive layout */
-
     @media (max-width: 900px) {
       .main-header {
         flex-wrap: wrap;
@@ -853,8 +903,12 @@
         bottom: 27px;
       }
 
-      .next-match {
-        margin-top: -25px;
+      .thumbnail-strip {
+        gap: 5px;
+      }
+
+      .thumbnail-button img {
+        height: 62px;
       }
 
       .page-section {
@@ -906,7 +960,7 @@
     <nav class="header-nav" id="main-navigation" aria-label="Main navigation">
       <ul class="nav-list">
         <li class="nav-item">
-          <a href="index.html" class="nav-link">
+          <a href="index.html" class="nav-link active" aria-current="page">
             <i class="fa-solid fa-house" aria-hidden="true"></i>
             Home
           </a>
@@ -920,10 +974,10 @@
 
           <ul class="dropdown-menu" id="teams-menu" hidden>
             <li><a href="Teams.html">All teams</a></li>
-            <li><a href="mens-xv.html">Men's XV</a></li>
-            <li><a href="womens-xv.html">Women's XV</a></li>
-            <li><a href="sevens.html">Sevens squad</a></li>
-            <li><a href="juniors.html">Juniors</a></li>
+            <li><a href="Teams.html#mens">Men's XV</a></li>
+            <li><a href="Teams.html#womens">Women's Rugby</a></li>
+            <li><a href="Teams.html#sevens">Sevens squad</a></li>
+            <li><a href="Teams.html#juniors">Juniors</a></li>
           </ul>
         </li>
 
@@ -934,7 +988,7 @@
           </button>
 
           <ul class="dropdown-menu" id="fixtures-menu" hidden>
-            <li><a href="fixtures.html">Upcoming matches</a></li>
+            <li><a href="Fixtures.html">Upcoming matches</a></li>
             <li><a href="results.html">Results</a></li>
             <li><a href="tournaments.html">Tournaments</a></li>
             <li><a href="training.html">Training schedule</a></li>
@@ -956,16 +1010,23 @@
         </li>
 
         <li class="nav-item">
-          <a href="shop.html" class="nav-link">
+          <a href="Shop.html" class="nav-link">
             <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
             Shop
           </a>
         </li>
 
         <li class="nav-item">
-          <a href="contact.html" class="nav-link">
+          <a href="Contact.html" class="nav-link">
             <i class="fa-solid fa-envelope" aria-hidden="true"></i>
             Contact
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="Join.html" class="nav-link">
+            <i class="fa-solid fa-person-running" aria-hidden="true"></i>
+            Join
           </a>
         </li>
       </ul>
@@ -1003,7 +1064,7 @@
 
         <div class="button-row">
           <a class="button" href="Join.html">Join the Bogong family</a>
-          <a class="button button-secondary" href="fixtures.html">View fixtures</a>
+          <a class="button button-secondary" href="Fixtures.html">View fixtures</a>
         </div>
       </div>
 
@@ -1020,15 +1081,37 @@
       </div>
     </section>
 
-    <!-- Replace bracketed details below with confirmed match information. -->
+    <section class="thumbnail-strip" aria-label="Choose a slideshow photo">
+      <button class="thumbnail-button active" type="button" aria-label="Show Swan Hill tournament photo" data-slide="0">
+        <img src="swanhill.jpg" alt="">
+      </button>
+
+      <button class="thumbnail-button" type="button" aria-label="Show Swan Hill team huddle photo" data-slide="1">
+        <img src="swanhill-2.jpg" alt="">
+      </button>
+
+      <button class="thumbnail-button" type="button" aria-label="Show lineout action photo" data-slide="2">
+        <img src="line-out pic.jpg" alt="">
+      </button>
+
+      <button class="thumbnail-button" type="button" aria-label="Show Footscray match photo" data-slide="3">
+        <img src="footscray.jpg" alt="">
+      </button>
+
+      <button class="thumbnail-button" type="button" aria-label="Show first club meeting photo" data-slide="4">
+        <img src="first-meeting.jpg" alt="">
+      </button>
+    </section>
+
+    <!-- Replace this information with confirmed upcoming match details. -->
     <section class="next-match" aria-labelledby="next-match-title">
       <p class="eyebrow">Next match</p>
       <h2 id="next-match-title">Bogong RUFC vs [Opponent]</h2>
       <p>Saturday [Date] · [Kick-off time] · [Ground / venue]</p>
 
-      <div class="button-row" style="justify-content: center;">
-        <a class="button" href="fixtures.html">Full fixtures</a>
-        <a class="button button-secondary match-details-button" href="contact.html">Match details</a>
+      <div class="button-row next-match-actions">
+        <a class="button" href="Fixtures.html">Full fixtures</a>
+        <a class="button button-green-outline" href="Contact.html">Match details</a>
       </div>
     </section>
 
@@ -1052,7 +1135,7 @@
           <p>Find the latest training times, location and what to bring for your first session.</p>
         </a>
 
-        <a class="action-card" href="contact.html">
+        <a class="action-card" href="Contact.html">
           <i class="fa-solid fa-handshake" aria-hidden="true"></i>
           <h3>Support the club</h3>
           <p>Ask about volunteering, partnerships, sponsorship or helping on match day.</p>
@@ -1082,7 +1165,7 @@
         </p>
 
         <p>
-          What began as a small group of dedicated players has grown into a proud and determined team representing the Bogong region with heart, discipline and unity.
+          What began as a small group of dedicated people has grown into a proud and determined club representing the Bogong region with heart, discipline and unity.
         </p>
 
         <p>
@@ -1102,6 +1185,7 @@
         <div class="section-heading">
           <p class="eyebrow">What we stand for</p>
           <h2 id="values-title">Our club values</h2>
+          <p>Community, respect and development guide how we represent Bogong Rugby Club.</p>
         </div>
 
         <div class="value-grid">
@@ -1130,7 +1214,7 @@
           <p>Contact Bogong Rugby Club for playing, training, volunteering or sponsorship enquiries.</p>
         </div>
 
-        <a class="button" href="contact.html">Contact the club</a>
+        <a class="button" href="Contact.html">Contact the club</a>
       </div>
     </section>
   </main>
@@ -1146,18 +1230,17 @@
       <div>
         <h2>Club links</h2>
         <div class="footer-links">
-          <a href="fixtures.html">Fixtures</a>
+          <a href="Fixtures.html">Fixtures</a>
+          <a href="Teams.html">Teams</a>
           <a href="Join.html">Join</a>
-          <a href="training.html">Training</a>
-          <a href="contact.html">Contact</a>
+          <a href="Contact.html">Contact</a>
         </div>
       </div>
 
       <div>
         <h2>Follow us</h2>
-
-        <!-- Replace # with your real club social-media links. -->
         <div class="footer-links">
+          <!-- Replace # with official club social links before publishing. -->
           <a href="#" aria-label="Bogong Rugby Club on Instagram">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i>
             Instagram
@@ -1243,6 +1326,7 @@
     /* Hero slideshow */
 
     const slides = Array.from(document.querySelectorAll(".slide"));
+    const thumbnailButtons = Array.from(document.querySelectorAll(".thumbnail-button"));
     const previousButton = document.querySelector(".slide-prev");
     const nextButton = document.querySelector(".slide-next");
     const hero = document.querySelector(".hero");
@@ -1260,6 +1344,10 @@
 
       slides.forEach((slide, position) => {
         slide.classList.toggle("active", position === slideIndex);
+      });
+
+      thumbnailButtons.forEach((button, position) => {
+        button.classList.toggle("active", position === slideIndex);
       });
 
       currentSlideDisplay.textContent = slideIndex + 1;
@@ -1289,6 +1377,13 @@
       startAutoSlide();
     });
 
+    thumbnailButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        showSlide(Number(button.dataset.slide));
+        startAutoSlide();
+      });
+    });
+
     hero.addEventListener("mouseenter", stopAutoSlide);
     hero.addEventListener("mouseleave", startAutoSlide);
     hero.addEventListener("focusin", stopAutoSlide);
@@ -1296,7 +1391,7 @@
 
     startAutoSlide();
 
-    /* Dynamic news from Google Sheets / Google Apps Script */
+    /* Dynamic news from Google Sheets / Apps Script */
 
     const NEWS_API_URL =
       "https://script.google.com/macros/s/AKfycbyog8keI5_ybXycPX39JHApTTQplMBRLhhrzjzpKXKKtCAuuUayxlrSxo9Az-liB8mk/exec";
@@ -1306,10 +1401,7 @@
 
       try {
         const url = new URL(value, window.location.href);
-
-        return ["http:", "https:"].includes(url.protocol)
-          ? url.href
-          : "";
+        return ["http:", "https:"].includes(url.protocol) ? url.href : "";
       } catch {
         return "";
       }
