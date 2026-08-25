@@ -502,7 +502,7 @@
       justify-content: center;
     }
 
-    /* Get involved cards */
+    /* Cards */
 
     .action-grid {
       display: grid;
@@ -546,7 +546,7 @@
       color: var(--muted);
     }
 
-    /* Latest news */
+    /* News */
 
     .news-section {
       padding-top: 0;
@@ -1312,8 +1312,10 @@
         <div class="footer-links">
           <a href="fixtures.html">Fixtures</a>
           <a href="teams.html">Teams</a>
+          <a href="shop.html">Shop</a>
           <a href="join.html">Join</a>
           <a href="contact.html">Contact</a>
+          <a href="policies.html">Policies</a>
         </div>
       </div>
 
@@ -1341,6 +1343,8 @@
   </footer>
 
   <script>
+    /* Navigation */
+
     const menuToggle = document.querySelector(".menu-toggle");
     const mainNavigation = document.querySelector(".header-nav");
     const dropdowns = document.querySelectorAll(".has-dropdown");
@@ -1401,6 +1405,8 @@
         });
       }
     });
+
+    /* Slideshow */
 
     const slides = Array.from(document.querySelectorAll(".slide"));
     const thumbnailButtons = Array.from(document.querySelectorAll(".thumbnail-button"));
@@ -1467,6 +1473,8 @@
     hero.addEventListener("focusout", startAutoSlide);
 
     startAutoSlide();
+
+    /* Dynamic news from Google Sheets / Apps Script */
 
     const NEWS_API_URL =
       "https://script.google.com/macros/s/AKfycbyog8keI5_ybXycPX39JHApTTQplMBRLhhrzjzpKXKKtCAuuUayxlrSxo9Az-liB8mk/exec";
