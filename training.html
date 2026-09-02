@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bogong Rugby Club training information. Find session times, what to bring and how to join a training session.">
+  <meta name="theme-color" content="#164403">
+  <title>Training | Bogong Rugby Club</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #164403;
+      --green-dark: #0d2c02;
+      --green-light: #b5e48c;
+      --red: #500402;
+      --gold: #ffcc00;
+      --gold-hover: #ffe066;
+      --page-bg: #f6f7f4;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #55616c;
+      --border: #dce3da;
+      --shadow: 0 8px 24px rgba(13, 44, 2, 0.12);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: "Open Sans", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 12px;
+      z-index: 2000;
+      padding: 10px 14px;
+      border-radius: 6px;
+      background: var(--gold);
+      color: #111;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Header */
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 82px;
+      padding: 8px clamp(16px, 4vw, 46px);
+      background: linear-gradient(90deg, #b5e48c 0%, #f3f5f4 78%);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 64px;
+      height: 64px;
+      flex: 0 0 auto;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.05rem, 2vw, 1.5rem);
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--green);
+      cursor: pointer;
+    }
+
+    .menu-toggle:hover,
+    .menu-toggle:focus-visible {
+      background: var(--green);
+      color: #fff;
+      outline: none;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link,
+    .dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: transparent;
+      color: var(--green);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible,
+    .dropdown-toggle:hover,
+    .dropdown-toggle:focus-visible,
+    .nav-item.open .dropdown-toggle {
+      background: var(--red);
+      color: #fff;
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .dropdown-toggle.active {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .dropdown-toggle .fa-chevron-down {
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-item.open .dropdown-toggle .fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      z-index: 1010;
+      min-width: 210px;
+      margin: 0;
+      padding: 6px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      list-style: none;
+    }
+
+    .dropdown-menu[hidden] {
+      display: none;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      border-radius: 5px;
+      padding: 9px 10px;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus-visible {
+      background: #edf6e8;
+      color: var(--green-dark);
+      outline: none;
+    }
+
+    /* Page hero */
+
+    .page-hero {
+      padding: 78px 16px 88px;
+      background:
+        linear-gradient(90deg, rgba(13, 44, 2, 0.9), rgba(13, 44, 2, 0.5)),
+        url("line-out pic.jpg") center / cover no-repeat;
+      color: #fff;
+    }
+
+    .page-hero-content {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .page-hero h1 {
+      max-width: 760px;
+      margin: 0 0 12px;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.08;
+      text-transform: uppercase;
+    }
+
+    .page-hero p:not(.eyebrow) {
+      max-width: 720px;
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    /* Shared page sections */
+
+    .page-section {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 64px 0;
+    }
+
+    .intro-panel {
+      margin-top: -40px;
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 34px);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .intro-panel h2 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    .intro-panel p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .section-heading {
+      max-width: 740px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
+    }
+
+    .section-heading .eyebrow {
+      color: var(--red);
+    }
+
+    .section-heading p:not(.eyebrow) {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      padding: 10px 20px;
+      background: var(--gold);
+      color: #1b1b1b;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: var(--gold-hover);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      border-color: var(--green);
+      background: transparent;
+      color: var(--green);
+    }
+
+    .button-outline:hover,
+    .button-outline:focus-visible {
+      background: var(--green);
+      color: #fff;
+    }
+
+    /* Training schedule */
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .schedule-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 260px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      background: var(--surface);
+      box-shadow: 0 3px 12px rgba(13, 44, 2, 0.07);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .schedule-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-5px);
+    }
+
+    .schedule-icon {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border-radius: 50%;
+      background: #edf6e8;
+      color: var(--red);
+      font-size: 1.25rem;
+    }
+
+    .schedule-card h3 {
+      margin: 16px 0 8px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.25rem;
+    }
+
+    .schedule-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .schedule-details {
+      display: grid;
+      gap: 8px;
+      margin: auto 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .schedule-details li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+    }
+
+    .schedule-details i {
+      width: 17px;
+      margin-top: 4px;
+      color: var(--red);
+      text-align: center;
+    }
+
+    /* First session */
+
+    .first-session {
+      background: #eaf4e5;
+    }
+
+    .first-session-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .first-session-card {
+      border-left: 5px solid var(--gold);
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .first-session-card i {
+      color: var(--red);
+      font-size: 1.55rem;
+    }
+
+    .first-session-card h3 {
+      margin: 12px 0 7px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.12rem;
+    }
+
+    .first-session-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* Location section */
+
+    .location-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .location-card,
+    .map-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 32px);
+      background: var(--surface);
+      box-shadow: 0 3px 12px rgba(13, 44, 2, 0.07);
+    }
+
+    .location-card h2,
+    .map-card h2 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1.5rem;
+    }
+
+    .location-card > p,
+    .map-card > p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .location-list {
+      display: grid;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .location-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+    }
+
+    .location-list i {
+      width: 18px;
+      margin-top: 4px;
+      color: var(--red);
+      text-align: center;
+    }
+
+    .location-list strong {
+      display: block;
+      color: var(--green-dark);
+    }
+
+    .location-list span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .map-placeholder {
+      display: grid;
+      min-height: 220px;
+      place-items: center;
+      border: 2px dashed #9cad9b;
+      border-radius: 10px;
+      padding: 20px;
+      background: #eef5ec;
+      color: var(--green);
+      text-align: center;
+    }
+
+    .map-placeholder i {
+      margin-bottom: 8px;
+      color: var(--red);
+      font-size: 2rem;
+    }
+
+    .map-placeholder p {
+      margin: 0;
+      font-size: 0.92rem;
+    }
+
+    .map-placeholder a {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--green);
+      font-weight: 800;
+      text-decoration: underline;
+    }
+
+    /* CTA */
+
+    .cta-section {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .cta-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .cta-content h2 {
+      margin: 0 0 6px;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .cta-content p {
+      margin: 0;
+      color: #e7f3df;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      padding: 40px 16px 18px;
+      background: var(--green-dark);
+      color: #fff;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 30px;
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .footer-content h2 {
+      margin: 0 0 10px;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .footer-content p {
+      margin: 0 0 8px;
+      color: #d5e4d0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #fff;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--gold);
+      outline: none;
+    }
+
+    .copyright {
+      width: min(1120px, 100%);
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: #c5d9bd;
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 900px) {
+      .main-header {
+        flex-wrap: wrap;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        margin-left: auto;
+      }
+
+      .header-nav {
+        display: none;
+        width: 100%;
+      }
+
+      .header-nav.open {
+        display: block;
+      }
+
+      .nav-list {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 8px 0 4px;
+      }
+
+      .nav-item {
+        width: 100%;
+      }
+
+      .nav-link,
+      .dropdown-toggle {
+        width: 100%;
+        justify-content: space-between;
+        padding: 12px;
+      }
+
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        margin-top: 3px;
+        box-shadow: none;
+      }
+
+      .schedule-grid,
+      .first-session-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .main-header {
+        min-height: 74px;
+        padding: 7px 16px;
+      }
+
+      .brand img {
+        width: 54px;
+        height: 54px;
+      }
+
+      .brand-name {
+        max-width: 215px;
+        font-size: 1rem;
+      }
+
+      .page-hero {
+        padding: 60px 16px 74px;
+      }
+
+      .page-section {
+        padding: 48px 0;
+      }
+
+      .cta-content {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="main-header">
+    <a class="brand" href="index.html" aria-label="Bogong Rugby Club home">
+      <img src="logo-6.png" alt="Bogong Rugby Club logo">
+      <span class="brand-name">Bogong Rugby Club</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <nav class="header-nav" id="main-navigation" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            Home
+          </a>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="teams-menu">
+            Teams
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="teams-menu" hidden>
+            <li><a href="teams.html">All teams</a></li>
+            <li><a href="teams.html#mens">Men's XV</a></li>
+            <li><a href="teams.html#womens">Women's Rugby</a></li>
+            <li><a href="teams.html#sevens">Sevens squad</a></li>
+            <li><a href="teams.html#juniors">Juniors</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button
+            class="dropdown-toggle active"
+            type="button"
+            aria-expanded="false"
+            aria-controls="fixtures-menu"
+          >
+            Fixtures
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="fixtures-menu" hidden>
+            <li><a href="training.html" aria-current="page">Training schedule</a></li>
+            <li><a href="contact.html">Fixtures and match information</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-dropdown">
+          <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="club-menu">
+            Club
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="club-menu" hidden>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="policies.html">Policies</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="shop.html" class="nav-link">
+            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+            Shop
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="contact.html" class="nav-link">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            Contact
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="join.html" class="nav-link">
+            <i class="fa-solid fa-person-running" aria-hidden="true"></i>
+            Join
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <p class="eyebrow">Train with Bogong</p>
+        <h1>Training</h1>
+        <p>
+          Training is where skills, fitness, confidence and friendships grow. Whether you are new to rugby or returning to the game, Bogong welcomes you.
+        </p>
+      </div>
+    </section>
+
+    <div class="page-section" style="padding-bottom: 0;">
+      <section class="intro-panel" aria-labelledby="training-intro-title">
+        <h2 id="training-intro-title">Everyone is welcome</h2>
+        <p>
+          Training sessions are designed to be supportive, challenging and enjoyable. Register your interest if you would like a coach or committee member to confirm the next session details.
+        </p>
+      </section>
+    </div>
+
+    <section class="page-section" aria-labelledby="schedule-title">
+      <div class="section-heading">
+        <p class="eyebrow">Training schedule</p>
+        <h2 id="schedule-title">When we train</h2>
+        <p>Replace the bracketed details below with confirmed training days, times and locations.</p>
+      </div>
+
+      <div class="schedule-grid">
+        <article class="schedule-card">
+          <div class="schedule-icon">
+            <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          </div>
+
+          <h3>Sevens Squad</h3>
+          <p>Fast-paced skills, fitness, game awareness and tournament preparation.</p>
+
+          <ul class="schedule-details">
+            <li>
+              <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+              <span><strong>Day:</strong> [Add day]</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              <span><strong>Time:</strong> [Add time]</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <span><strong>Venue:</strong> [Add venue]</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="schedule-card">
+          <div class="schedule-icon">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          </div>
+
+          <h3>Men's XV</h3>
+          <p>Team structure, contact preparation, fitness and fifteen-a-side rugby development.</p>
+
+          <ul class="schedule-details">
+            <li>
+              <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+              <span><strong>Day:</strong> [Add day]</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              <span><strong>Time:</strong> [Add time]</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <span><strong>Venue:</strong> [Add venue]</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="schedule-card">
+          <div class="schedule-icon">
+            <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+          </div>
+
+          <h3>New Players</h3>
+          <p>New to rugby or returning after a break? Contact the club and we will help you find the right session.</p>
+
+          <ul class="schedule-details">
+            <li>
+              <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+              <span><strong>Sessions:</strong> [Add details]</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span><strong>Contact:</strong> Register interest online</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-heart" aria-hidden="true"></i>
+              <span><strong>Experience:</strong> Beginners welcome</span>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="first-session">
+      <div class="page-section" aria-labelledby="first-session-title">
+        <div class="section-heading">
+          <p class="eyebrow">Your first session</p>
+          <h2 id="first-session-title">What to expect</h2>
+          <p>You do not need to know every rugby rule before training. Come along, meet the group and take things at your own pace.</p>
+        </div>
+
+        <div class="first-session-grid">
+          <article class="first-session-card">
+            <i class="fa-solid fa-shirt" aria-hidden="true"></i>
+            <h3>What to bring</h3>
+            <p>Wear comfortable active clothing and bring a water bottle. Ask the club about boots, mouthguards and any other equipment.</p>
+          </article>
+
+          <article class="first-session-card">
+            <i class="fa-solid fa-person-running" aria-hidden="true"></i>
+            <h3>What training includes</h3>
+            <p>Sessions may include warm-ups, passing, running lines, fitness, game skills, team drills and recovery work.</p>
+          </article>
+
+          <article class="first-session-card">
+            <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+            <h3>Who can attend</h3>
+            <p>New players, returning players and experienced rugby players are welcome. Contact the club if you have questions about the right pathway.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="location-title">
+      <div class="location-layout">
+        <section class="location-card">
+          <h2 id="location-title">Training location</h2>
+          <p>Update this section when the regular training ground and final schedule are confirmed.</p>
+
+          <ul class="location-list">
+            <li>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <div>
+                <strong>Ground</strong>
+                <span>[Add club ground name and address]</span>
+              </div>
+            </li>
+
+            <li>
+              <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+              <div>
+                <strong>Schedule updates</strong>
+                <span>Training updates are shared through official Bogong Rugby Club social channels.</span>
+              </div>
+            </li>
+
+            <li>
+              <i class="fa-solid fa-cloud-sun" aria-hidden="true"></i>
+              <div>
+                <strong>Weather</strong>
+                <span>Sessions may change due to ground conditions or weather. Check club updates before travelling.</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="button-row" style="margin-top: 22px;">
+            <a class="button" href="join.html">Register interest</a>
+            <a class="button button-outline" href="contact.html">Ask a question</a>
+          </div>
+        </section>
+
+        <aside class="map-card">
+          <h2>Get directions</h2>
+          <p>Add your official training ground map link before publishing.</p>
+
+          <div class="map-placeholder">
+            <div>
+              <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+              <p>Replace the link below with your Google Maps training-ground location.</p>
+
+              <!-- Replace # with the club's real Google Maps link. -->
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                Open map
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="page-section cta-content">
+        <div>
+          <h2>Ready to train with Bogong?</h2>
+          <p>Register your interest and a coach or committee member can confirm the next available session.</p>
+        </div>
+
+        <a class="button" href="join.html">Join Bogong Rugby Club</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <h2>Bogong Rugby Club</h2>
+        <p>Community rugby in the high country.</p>
+        <p>Stronger together. Bogong forever.</p>
+      </div>
+
+      <div>
+        <h2>Club links</h2>
+        <div class="footer-links">
+          <a href="teams.html">Teams</a>
+          <a href="training.html">Training</a>
+          <a href="shop.html">Shop</a>
+          <a href="join.html">Join</a>
+          <a href="contact.html">Contact</a>
+          <a href="policies.html">Policies</a>
+        </div>
+      </div>
+
+      <div>
+        <h2>Follow us</h2>
+
+        <!-- Replace # with official club social-media URLs. -->
+        <div class="footer-links">
+          <a href="#" aria-label="Bogong Rugby Club on Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            Instagram
+          </a>
+
+          <a href="#" aria-label="Bogong Rugby Club on Facebook">
+            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <p class="copyright">
+      © <span id="year"></span> Bogong Rugby Club. All rights reserved.
+    </p>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNavigation = document.querySelector(".header-nav");
+    const dropdowns = document.querySelectorAll(".has-dropdown");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNavigation.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
+        : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    });
+
+    dropdowns.forEach((dropdown) => {
+      const toggle = dropdown.querySelector(".dropdown-toggle");
+      const menu = dropdown.querySelector(".dropdown-menu");
+
+      toggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        const willOpen = !dropdown.classList.contains("open");
+
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+
+        if (willOpen) {
+          dropdown.classList.add("open");
+          toggle.setAttribute("aria-expanded", "true");
+          menu.hidden = false;
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".has-dropdown")) {
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        dropdowns.forEach((item) => {
+          item.classList.remove("open");
+          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+          item.querySelector(".dropdown-menu").hidden = true;
+        });
+      }
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
