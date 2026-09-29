@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Join Bogong Rugby Club. Register your interest to play, train, volunteer or support community rugby in the high country.">
+  <meta name="description" content="Express your interest in playing, training, volunteering or supporting Bogong Rugby Club in the high country.">
   <meta name="theme-color" content="#164403">
   <title>Join Bogong Rugby Club</title>
 
@@ -363,6 +363,39 @@
       margin-top: 5px;
       color: var(--muted);
       font-size: 0.82rem;
+    }
+
+    /* Honeypot field: hidden from people, visible to spam bots. */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .privacy-notice {
+      margin: 4px 0 18px;
+      border-left: 5px solid var(--gold);
+      border-radius: 0 7px 7px 0;
+      padding: 12px 14px;
+      background: #fffdf2;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .privacy-notice p {
+      margin: 0 0 6px;
+    }
+
+    .privacy-notice p:last-child {
+      margin-bottom: 0;
+    }
+
+    .privacy-notice a {
+      color: var(--green);
+      font-weight: 700;
+      text-decoration: underline;
     }
 
     .consent-row {
@@ -769,38 +802,25 @@
     <div class="page-wrapper">
       <div class="join-layout">
         <section class="join-form" aria-labelledby="form-title">
-          <h2 id="form-title">Register your interest</h2>
+          <h2 id="form-title">Express your interest</h2>
           <p class="form-intro">
-            Complete the form and a coach or committee member will get in touch. Fields marked with an asterisk are required.
+            Tell us who you are and what you are interested in. A coach or committee member will reply by email. Fields marked with an asterisk are required.
           </p>
 
-          <form id="join-form">
+          <form id="join-form" novalidate>
             <div class="form-row">
               <div class="form-group">
-                <label for="full-name">Full name *</label>
+                <label for="full-name">Your name *</label>
                 <input
                   id="full-name"
                   name="fullName"
                   type="text"
                   autocomplete="name"
+                  maxlength="100"
                   required
                 >
               </div>
 
-              <div class="form-group">
-                <label for="phone">Phone number *</label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  autocomplete="tel"
-                  inputmode="tel"
-                  required
-                >
-              </div>
-            </div>
-
-            <div class="form-row">
               <div class="form-group">
                 <label for="email">Email address *</label>
                 <input
@@ -808,21 +828,10 @@
                   name="email"
                   type="email"
                   autocomplete="email"
+                  maxlength="120"
                   required
                 >
-              </div>
-
-              <div class="form-group">
-                <label for="age">Age</label>
-                <input
-                  id="age"
-                  name="age"
-                  type="number"
-                  min="5"
-                  max="100"
-                  inputmode="numeric"
-                >
-                <span class="field-help">Leave blank if you are enquiring as a volunteer or supporter.</span>
+                <span class="field-help">We will reply to this address.</span>
               </div>
             </div>
 
@@ -830,259 +839,51 @@
               <label for="team">What are you interested in? *</label>
               <select id="team" name="team" required>
                 <option value="">Select an option</option>
-                <option value="Sevens Squad">Sevens Squad</option>
                 <option value="Men's XV">Men's XV</option>
                 <option value="Women's Rugby">Women's Rugby</option>
-                <option value="Juniors">Juniors</option>
+                <option value="Sevens Squad">Sevens Squad</option>
+                <option value="Juniors (parent or guardian enquiry)">Juniors (parent or guardian enquiry)</option>
                 <option value="Supporter / Volunteer">Supporter / Volunteer</option>
                 <option value="Sponsorship / Partnership">Sponsorship / Partnership</option>
+                <option value="General enquiry">General enquiry</option>
               </select>
+              <span class="field-help">
+                For players under 18, a parent or guardian should complete this form using their own name and email.
+              </span>
             </div>
 
             <div class="form-group">
-              <label for="experience">Rugby experience</label>
-              <select id="experience" name="experience">
-                <option value="">Select your experience level</option>
-                <option value="Beginner">Beginner — never played before</option>
-                <option value="Intermediate">Intermediate — some rugby experience</option>
-                <option value="Experienced">Experienced — played for a club or team</option>
-                <option value="Not applicable">Not applicable</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Tell us a little more</label>
+              <label for="message">Anything you would like to add? (optional)</label>
               <textarea
                 id="message"
                 name="message"
-                placeholder="For example: preferred position, junior age group, availability, questions, or how you would like to help."
+                maxlength="1000"
+                placeholder="For example: your rugby experience, availability, questions, or how you would like to help."
               ></textarea>
+            </div>
+
+            <!-- Honeypot: real visitors never see or fill this field. -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Website</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="privacy-notice">
+              <p>
+                We will use your name, email and enquiry details only to respond about Bogong Rugby Club. Please do not include medical or other sensitive information in this form.
+              </p>
+              <p>
+                Only authorised club volunteers can see your enquiry. Email
+                <a href="mailto:bogongrugbyclub@gmail.com">bogongrugbyclub@gmail.com</a>
+                to ask about your information or request its deletion.
+              </p>
             </div>
 
             <div class="consent-row">
               <input id="consent" name="consent" type="checkbox" value="Yes" required>
               <label for="consent">
-                I agree that Bogong Rugby Club may use the details above to respond to my enquiry.
+                I agree that Bogong Rugby Club may use my name, email and enquiry details to respond to this enquiry.
               </label>
             </div>
 
-            <button id="submit-button" type="submit" class="submit-btn">
-              Submit interest form
-            </button>
-
-            <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
-          </form>
-        </section>
-
-        <aside class="side-panel" aria-label="Club contact information">
-          <section class="info-card">
-            <h2>Contact the club</h2>
-
-            <ul class="contact-list">
-              <li>
-                <a href="mailto:bogongrugbyclub@gmail.com">
-                  <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                  bogongrugbyclub@gmail.com
-                </a>
-              </li>
-
-              <li>
-                <!-- Replace # with the real Facebook page URL. -->
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-brands fa-facebook" aria-hidden="true"></i>
-                  Bogong Rugby Club
-                </a>
-              </li>
-
-              <li>
-                <span>
-                  <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
-                  Training details are announced through club social channels.
-                </span>
-              </li>
-            </ul>
-          </section>
-
-          <section class="info-card notice-card">
-            <h2>New to rugby?</h2>
-            <p>
-              Beginners are welcome. You do not need to know every rule before getting involved — the club can help you get started.
-            </p>
-          </section>
-        </aside>
-      </div>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-content">
-      <div>
-        <h2>Bogong Rugby Club</h2>
-        <p>Community rugby in the high country.</p>
-        <p>Stronger together. Bogong forever.</p>
-      </div>
-
-      <div>
-        <h2>Club links</h2>
-        <div class="footer-links">
-          <a href="fixtures.html">Fixtures</a>
-          <a href="Teams.html">Teams</a>
-          <a href="training.html">Training</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-
-      <div>
-        <h2>Follow us</h2>
-        <div class="footer-links">
-          <!-- Replace # with official social-media links. -->
-          <a href="#" aria-label="Bogong Rugby Club on Instagram">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-            Instagram
-          </a>
-
-          <a href="#" aria-label="Bogong Rugby Club on Facebook">
-            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
-            Facebook
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <p class="copyright">
-      © <span id="year"></span> Bogong Rugby Club. All rights reserved.
-    </p>
-  </footer>
-
-  <script>
-    /* Navigation */
-
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mainNavigation = document.querySelector(".header-nav");
-    const dropdowns = document.querySelectorAll(".has-dropdown");
-
-    menuToggle.addEventListener("click", () => {
-      const isOpen = mainNavigation.classList.toggle("open");
-
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
-      );
-
-      menuToggle.innerHTML = isOpen
-        ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
-        : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
-    });
-
-    dropdowns.forEach((dropdown) => {
-      const toggle = dropdown.querySelector(".dropdown-toggle");
-      const menu = dropdown.querySelector(".dropdown-menu");
-
-      toggle.addEventListener("click", (event) => {
-        event.stopPropagation();
-
-        const willOpen = !dropdown.classList.contains("open");
-
-        dropdowns.forEach((item) => {
-          item.classList.remove("open");
-          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
-          item.querySelector(".dropdown-menu").hidden = true;
-        });
-
-        if (willOpen) {
-          dropdown.classList.add("open");
-          toggle.setAttribute("aria-expanded", "true");
-          menu.hidden = false;
-        }
-      });
-    });
-
-    document.addEventListener("click", (event) => {
-      if (!event.target.closest(".has-dropdown")) {
-        dropdowns.forEach((item) => {
-          item.classList.remove("open");
-          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
-          item.querySelector(".dropdown-menu").hidden = true;
-        });
-      }
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        dropdowns.forEach((item) => {
-          item.classList.remove("open");
-          item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
-          item.querySelector(".dropdown-menu").hidden = true;
-        });
-      }
-    });
-
-    /* Join form */
-
-    const SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbx4PyABfkmqxXosv2UQAFVKbszXSkGI8UioO8XWJs2ymdBYIeEzLxqlc6wHcCYlFnkblg/exec";
-
-    const form = document.getElementById("join-form");
-    const submitButton = document.getElementById("submit-button");
-    const formMessage = document.getElementById("form-message");
-
-    function showFormMessage(message, type) {
-      formMessage.textContent = message;
-      formMessage.className = `form-message ${type}`;
-    }
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      submitButton.disabled = true;
-      submitButton.textContent = "Sending...";
-      formMessage.className = "form-message";
-      formMessage.textContent = "";
-
-      const formData = new FormData(form);
-
-      try {
-        const response = await fetch(SCRIPT_URL, {
-          method: "POST",
-          body: formData
-        });
-
-        if (!response.ok) {
-          throw new Error(`Form request failed: ${response.status}`);
-        }
-
-        showFormMessage(
-          "Thank you — your interest form has been sent. A Bogong Rugby Club representative will be in touch soon.",
-          "success"
-        );
-
-        form.reset();
-
-        /* Optional redirect after a successful form submission:
-        window.setTimeout(() => {
-          window.location.href = "join-success.html";
-        }, 1500);
-        */
-      } catch (error) {
-        console.error("Join form error:", error);
-
-        showFormMessage(
-          "We could not send your form right now. Please try again later or email bogongrugbyclub@gmail.com directly.",
-          "error"
-        );
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = "Submit interest form";
-      }
-    });
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+            <button id="submit-
