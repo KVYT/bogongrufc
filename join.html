@@ -886,4 +886,230 @@
               </label>
             </div>
 
-            <button id="submit-
+            <button id="submit-button" type="submit" class="submit-btn">
+              Send an expression of interest
+            </button>
+
+            <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
+          </form>
+        </section>
+
+        <aside class="side-panel" aria-label="Club contact information">
+          <section class="info-card">
+            <h2>Contact the club</h2>
+
+            <ul class="contact-list">
+              <li>
+                <a href="mailto:bogongrugbyclub@gmail.com">
+                  <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                  bogongrugbyclub@gmail.com
+                </a>
+              </li>
+
+              <li>
+                <!-- Replace # with the real Facebook page URL. -->
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                  Bogong Rugby Club
+                </a>
+              </li>
+
+              <li>
+                <span>
+                  <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+                  Training details are announced through club social channels.
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <section class="info-card notice-card">
+            <h2>New to rugby?</h2>
+            <p>
+              Beginners are welcome. You do not need to know every rule before getting involved. The club can help you get started.
+            </p>
+          </section>
+
+          <section class="info-card">
+            <h2>What happens next</h2>
+            <p>
+              This form is an expression of interest, not a player registration. If you decide to play, the club will explain the registration steps and any details needed at that stage.
+            </p>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div>
+        <h2>Bogong Rugby Club</h2>
+        <p>Community rugby in the high country.</p>
+        <p>Stronger together. Bogong forever.</p>
+      </div>
+
+      <div>
+        <h2>Club links</h2>
+        <div class="footer-links">
+          <a href="fixtures.html">Fixtures</a>
+          <a href="teams.html">Teams</a>
+          <a href="training.html">Training</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h2>Follow us</h2>
+        <div class="footer-links">
+          <!-- Replace # with official social-media links. -->
+          <a href="#" aria-label="Bogong Rugby Club on Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            Instagram
+          </a>
+
+          <a href="#" aria-label="Bogong Rugby Club on Facebook">
+            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <p class="copyright">
+      © <span id="year"></span> Bogong Rugby Club. All rights reserved.
+    </p>
+  </footer>
+
+  <script>
+    /* Navigation */
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNavigation = document.querySelector(".header-nav");
+    const dropdowns = document.querySelectorAll(".has-dropdown");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNavigation.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark" aria-hidden="true"></i>'
+        : '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    });
+
+    function closeAllDropdowns() {
+      dropdowns.forEach((item) => {
+        item.classList.remove("open");
+        item.querySelector(".dropdown-toggle").setAttribute("aria-expanded", "false");
+        item.querySelector(".dropdown-menu").hidden = true;
+      });
+    }
+
+    dropdowns.forEach((dropdown) => {
+      const toggle = dropdown.querySelector(".dropdown-toggle");
+      const menu = dropdown.querySelector(".dropdown-menu");
+
+      toggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        const willOpen = !dropdown.classList.contains("open");
+        closeAllDropdowns();
+
+        if (willOpen) {
+          dropdown.classList.add("open");
+          toggle.setAttribute("aria-expanded", "true");
+          menu.hidden = false;
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".has-dropdown")) {
+        closeAllDropdowns();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeAllDropdowns();
+      }
+    });
+
+    /* Join form */
+
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbx4PyABfkmqxXosv2UQAFVKbszXSkGI8UioO8XWJs2ymdBYIeEzLxqlc6wHcCYlFnkblg/exec";
+
+    const form = document.getElementById("join-form");
+    const submitButton = document.getElementById("submit-button");
+    const formMessage = document.getElementById("form-message");
+    const SUBMIT_LABEL = "Send an expression of interest";
+
+    function showFormMessage(message, type) {
+      formMessage.textContent = message;
+      formMessage.className = `form-message ${type}`;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      /* If the hidden honeypot field is filled in, it is almost certainly a bot.
+         Pretend to succeed so the bot moves on, but send nothing. */
+      if (form.elements.website.value.trim() !== "") {
+        form.reset();
+        showFormMessage("Thank you, your expression of interest has been sent.", "success");
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+      formMessage.className = "form-message";
+      formMessage.textContent = "";
+
+      const formData = new FormData(form);
+      formData.delete("website");
+      formData.append("source", "join.html");
+
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error(`Form request failed: ${response.status}`);
+        }
+
+        showFormMessage(
+          "Thank you, your expression of interest has been sent. A Bogong Rugby Club representative will reply by email.",
+          "success"
+        );
+
+        form.reset();
+      } catch (error) {
+        console.error("Join form error:", error);
+
+        showFormMessage(
+          "We could not send your form right now. Please try again later or email bogongrugbyclub@gmail.com directly.",
+          "error"
+        );
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = SUBMIT_LABEL;
+      }
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
